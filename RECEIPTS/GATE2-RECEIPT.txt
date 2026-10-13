@@ -1,0 +1,25 @@
+=== GATE 2: SEMANTIC GCD-TO-LCM MUTATION ===
+Tue Oct 13 03:08:06 UTC 2026
+BASELINE_BUILD_EXIT=0
+MUTATION_BUILD_EXIT=1
+RESTORED_BUILD_EXIT=0
+=== BASELINE LOG TAIL ===
+info: [root]: lakefile.lean and lakefile.toml are both present; using lakefile.lean
+Build completed successfully (4 jobs).
+=== MUTATION LOG TAIL ===
+info: [root]: lakefile.lean and lakefile.toml are both present; using lakefile.lean
+✖ [2/4] Building AQFPR006.Basic (31s)
+trace: .> LEAN_PATH=/root/aqarion-lean/AQFPR006/.lake/packages/Cli/.lake/build/lib/lean:/root/aqarion-lean/AQFPR006/.lake/packages/batteries/.lake/build/lib/lean:/root/aqarion-lean/AQFPR006/.lake/packages/Qq/.lake/build/lib/lean:/root/aqarion-lean/AQFPR006/.lake/packages/aesop/.lake/build/lib/lean:/root/aqarion-lean/AQFPR006/.lake/packages/proofwidgets/.lake/build/lib/lean:/root/aqarion-lean/AQFPR006/.lake/packages/importGraph/.lake/build/lib/lean:/root/aqarion-lean/AQFPR006/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/root/aqarion-lean/AQFPR006/.lake/packages/plausible/.lake/build/lib/lean:/root/aqarion-lean/AQFPR006/.lake/packages/mathlib/.lake/build/lib/lean:/root/aqarion-lean/AQFPR006/.lake/build/lib/lean /root/.elan/toolchains/leanprover--lean4---v4.35.0-rc3/bin/lean /root/aqarion-lean/AQFPR006/AQFPR006/Basic.lean -o /root/aqarion-lean/AQFPR006/.lake/build/lib/lean/AQFPR006/Basic.olean -i /root/aqarion-lean/AQFPR006/.lake/build/lib/lean/AQFPR006/Basic.ilean -c /root/aqarion-lean/AQFPR006/.lake/build/ir/AQFPR006/Basic.c --setup /root/aqarion-lean/AQFPR006/.lake/build/ir/AQFPR006/Basic.setup.json --json
+error: AQFPR006/Basic.lean:38:52: Tactic `native_decide` evaluated that the proposition
+  weightedBell [1, 1, 2] = 7
+is false
+error: AQFPR006/Basic.lean:41:49: Tactic `native_decide` evaluated that the proposition
+  weightedBell [2, 4] = 9
+is false
+Some required targets logged failures:
+- AQFPR006.Basic
+error: build failed
+=== RESTORED LOG TAIL ===
+info: [root]: lakefile.lean and lakefile.toml are both present; using lakefile.lean
+✔ [2/4] Built AQFPR006.Basic (30s)
+Build completed successfully (4 jobs).

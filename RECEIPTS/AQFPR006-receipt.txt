@@ -1,0 +1,16 @@
+=== AQFPR006 REBUILD RECEIPT ===
+Tue Oct 13 03:04:16 UTC 2026
+=== TOOLCHAIN ===
+Lean (version 4.35.0-rc3, aarch64-unknown-linux-gnu, commit 470d5ce1400764999581fd26d5d72b00d990b0f4, Release)
+Lake version 5.0.0-src+470d5ce (Lean version 4.35.0-rc3)
+=== REPAIR ===
+Fixed rgs empty-code case; replaced deprecated List.get! with bounded list indexing.
+=== SOURCE HASHES ===
+49b37f814920115a5efd84539cd67a8451eadb4dfbaf2c2d1db5824ab6e14687  AQFPR006/Basic.lean
+f1711967c0e1efc4d8816ddfa12dc7a02b105dbb3db3cfd39bfd942eb6b8107c  AQFPR006/Basic.lean.pre-rgsfix
+4615f1fc5b607f57d9ea1d919fcf1935212da354a3b220006091cce0a032d671  AQFPR006/Basic.lean.pre-getfix
+=== BUILD LOG TAIL ===
+info: [root]: lakefile.lean and lakefile.toml are both present; using lakefile.lean
+✔ [2/4] Built AQFPR006.Basic (32s)
+✔ [3/4] Built AQFPR006 (34s)
+Build completed successfully (4 jobs).
