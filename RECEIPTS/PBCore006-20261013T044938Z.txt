@@ -1,0 +1,12 @@
+=== PBCore006 REBUILD RECEIPT ===
+Tue Oct 13 04:49:38 UTC 2026
+Git commit: 19311e0fa01de575c964a701793dbdc0047ccca0
+Toolchain: leanprover/lean4:v4.35.0-rc4
+
+=== SOURCE HASHES ===
+caedb9ff2cace2b4f94b96b7f823d0df351a43d6933d430617839ff6889f1f32  /root/aqarion-lean-transfer/PBCore006/PBCore006.lean
+c41361d3d15cea6f768b664a0441daa621cdec6447f0b1409ac3fee638664eb7  /root/aqarion-lean-transfer/PBCore006/lakefile.lean
+
+=== BUILD ===
+Build completed successfully (3 jobs).
+PBCore006_BUILD_EXIT=0

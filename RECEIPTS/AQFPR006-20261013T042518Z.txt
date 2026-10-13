@@ -1,0 +1,13 @@
+=== AQFPR006 REBUILD RECEIPT ===
+Tue Oct 13 04:25:18 UTC 2026
+Git commit: 19311e0fa01de575c964a701793dbdc0047ccca0
+Toolchain: leanprover/lean4:v4.35.0-rc3
+
+=== SOURCE HASHES ===
+fe964f0f4c2d9c8fdc85920f5caf7f5180505b399ab9dcaeb70593e403c604be  /root/aqarion-lean-transfer/AQFPR006/AQFPR006.lean
+49b37f814920115a5efd84539cd67a8451eadb4dfbaf2c2d1db5824ab6e14687  /root/aqarion-lean-transfer/AQFPR006/AQFPR006/Basic.lean
+923b9167de8960a1863fd8b73075e8f5f58fd780f255aaa6b5f99ed0203311b5  /root/aqarion-lean-transfer/AQFPR006/lakefile.lean
+
+=== BUILD ===
+Build completed successfully (4 jobs).
+AQFPR006_BUILD_EXIT=0
