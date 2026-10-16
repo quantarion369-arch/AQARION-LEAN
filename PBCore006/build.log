@@ -1,0 +1,37 @@
+✔ [12/35] Built ImportGraph.Lean.Syntax (34s)
+✔ [13/36] Built ImportGraph.Lean.MessageData (34s)
+✔ [14/36] Built ImportGraph.Lake (59s)
+✔ [15/36] Built ImportGraph.Lean.Environment (37s)
+✔ [16/37] Built ImportGraph.Lean.EnvExtension (46s)
+✔ [17/37] Built ImportGraph.Imports.Pretty (54s)
+✔ [18/37] Built ImportGraph.Imports.RequiredModules (31s)
+✔ [19/39] Built ImportGraph.Graph.TransitiveClosure (33s)
+✔ [20/40] Built ImportGraph.Widget.Collapsible (44s)
+✔ [21/45] Built ImportGraph.Imports.ImportGraph (53s)
+✔ [22/47] Built ImportGraph.Imports.Redundant (37s)
+✔ [23/47] Built ImportGraph.Imports.FromSource (46s)
+✔ [24/47] Built ImportGraph.Widget.Copy (64s)
+✔ [25/50] Built ImportGraph.WorkspaceModel.Base (106s)
+✔ [26/51] Built ImportGraph.Widget.GoToModule (77s)
+✔ [27/51] Built ImportGraph.WorkspaceModel.Summary.Core (46s)
+bash: line 6: lake: command not found
+error: unknown short option '-j'
+No command lake found, did you mean:
+ Command lame in package lame
+ Command make in package make
+ Command make in package make-guile
+ Command rake in package ruby
+bash: line 1: lake: command not found
+⚠ [784/785] Built PBCore006 (123s)
+warning: PBCore006.lean: imports `Mathlib.Combinatorics.SimpleGraph.Basic` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: PBCore006.lean: imports `Mathlib.Data.Fintype.Card` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: PBCore006.lean: imports `Mathlib.GroupTheory.Perm.Basic` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: PBCore006.lean: imports `Mathlib.Order.SetNotation` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: PBCore006.lean:31:8: This simp argument is unused:
+  PermutationInvariantEquiv
+
+Hint: Omit it from the simp argument list.
+  [apply] simp
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+Build completed successfully (785 jobs).
