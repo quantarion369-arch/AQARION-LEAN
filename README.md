@@ -1,4 +1,4 @@
-# AQARION Lean Transfer
+# AQARION LEAN
 
 This repository contains the current transferable Lean sources, on-device Android ARM64 build receipts, and consolidated checkpoint documentation for the AQARION Lean work.
 
