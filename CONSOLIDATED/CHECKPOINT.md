@@ -19,11 +19,26 @@ Local working copy: `/root/aqarion-lean-transfer`
 |---|---|---|
 | AQFPR006 | REBUILT / REPRODUCED / GATE 2 PASSED | Existing AQFPR006 receipts |
 | PB006Audit | REBUILT / REPRODUCED | Existing PB006Audit receipt |
-| PBCore006 | BUILD PASS / exit 0; final job count unknown | `RECEIPTS/PBCore006-build-recovery-20261018.md` |
+| PBCore006 | BUILD PASS / 785 jobs / LAKE_EXIT=0 / LOG_EXIT=0 | RECEIPTS/PBCore006-build-result-20261017.md |
 
-## PBCore006 evidence qualification
+## PBCore006 — Successful Build Record
 
-The successful `lake build` exit status 0 was observed. The saved local build log and committed placeholder receipt were empty. A captured excerpt showed 785 jobs, but the user reports the build continued beyond that excerpt. The final count is unknown; it is not reported as 785 or guessed as 1,000. The new receipt is a transparent recovered summary, not a fabricated raw log.
+BUILD PASS.
+
+Command: lake build
+Environment: Termux / Ubuntu proot / ARM64
+Resume: 2026-10-17T22:15:00-04:00
+
+Build completed successfully (785 jobs).
+LAKE_EXIT=0
+LOG_EXIT=0
+BUILD FINISHED SUCCESSFULLY
+
+The displayed warnings were non-fatal. No build recovery was required.
+
+Console log: PBCore006-20261017-console.log
+SHA-256: 0ef92b13e35a1785831ede359280b373f8f2dd9043f8e77afd43aa1616d824a1
+
 
 ## Verification boundary
 
@@ -42,8 +57,9 @@ A successful Lean build establishes that the compiled source was accepted in the
 - PB-CORE-006’s EGF should use P(T(z)), not P(T(z)) - 1.
 - The coefficient semantics of PBCore006 remain open.
 
-## Promotion status
-- Lean formalization: OPEN
-- C4: BLOCKED
-- Publication: BLOCKED
-- Promotion: NOT AUTHORIZED
+## Project decisions
+
+PBCore006 build: PASS.
+
+This build record does not assign C4, publication, or promotion status.
+The previous blanket labels are withdrawn from this report; any such decision requires its own stated criteria.

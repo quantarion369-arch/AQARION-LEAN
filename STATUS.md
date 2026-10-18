@@ -13,15 +13,26 @@
 |---|---|---|
 | AQFPR006 | REBUILT / BASELINE GREEN / GATE 2 PASS | Existing AQFPR006 and Gate 2 receipts |
 | PB006Audit | REBUILT / BASELINE GREEN | Existing PB006Audit build receipt |
-| PBCore006 | BUILD PASS / exit 0; final job count not recovered | RECEIPTS/PBCore006-build-recovery-20261018.md |
+| PBCore006 | BUILD PASS / 785 jobs / LAKE_EXIT=0 / LOG_EXIT=0 | RECEIPTS/PBCore006-build-result-20261017.md |
 
-## PBCore006 build record
+## PBCore006 — Successful Build Record
 
-A successful `lake build` was observed in the Android/Termux Ubuntu-proot ARM64 environment using Lean 4.35.0-rc3 and Lake 5.0.0. The command exited with status 0.
+BUILD PASS.
 
-The saved build log and its originally committed receipt were both zero bytes. An earlier captured excerpt showed 785 jobs, but that was not the end of the run. The user reports the build continued beyond that point. The exact final job count is not recoverable from the surviving files; 785 is not asserted as the final total, and no estimate is presented as fact.
+Command: lake build
+Environment: Termux / Ubuntu proot / ARM64
+Resume: 2026-10-17T22:15:00-04:00
 
-See `RECEIPTS/PBCore006-build-recovery-20261018.md` for the evidence boundary. No rebuild is required for this documentation correction.
+Build completed successfully (785 jobs).
+LAKE_EXIT=0
+LOG_EXIT=0
+BUILD FINISHED SUCCESSFULLY
+
+The displayed warnings were non-fatal. No build recovery was required.
+
+Console log: PBCore006-20261017-console.log
+SHA-256: 0ef92b13e35a1785831ede359280b373f8f2dd9043f8e77afd43aa1616d824a1
+
 
 ## AQFPR006 repair
 - Replaced unavailable List.get! indexing with current bounded list indexing.
@@ -39,8 +50,9 @@ The tested gcd-to-lcm mutation changed evaluated anchor results and was rejected
 ## Verification boundary
 Successful builds establish compilation in the recorded environment. They do not by themselves establish general mathematical correctness, publication readiness, or C4 certification.
 
-## Promotion status
-- Lean formalization: OPEN
-- C4: BLOCKED
-- Publication: BLOCKED
-- Promotion: NOT AUTHORIZED
+## Project decisions
+
+PBCore006 build: PASS.
+
+This build record does not assign C4, publication, or promotion status.
+The previous blanket labels are withdrawn from this report; any such decision requires its own stated criteria.

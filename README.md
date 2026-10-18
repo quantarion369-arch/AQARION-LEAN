@@ -1,5 +1,28 @@
 # AQARION LEAN
 
+<!-- PBCORE006-BUILD-PASS-20261017 -->
+## PBCore006 — Successful Lean Build
+
+PBCore006 completed `lake build` successfully in Termux / Ubuntu proot on ARM64.
+
+```text
+Build completed successfully (785 jobs).
+LAKE_EXIT=0
+LOG_EXIT=0
+BUILD FINISHED SUCCESSFULLY
+```
+
+- Resume timestamp: `2026-10-17T22:15:00-04:00`.
+- The displayed warnings were non-fatal.
+- [Successful build record](RECEIPTS/PBCore006-build-result-20261017.md)
+- [Actual console log](RECEIPTS/PBCore006-20261017-console.log)
+
+The console log was copied from the device log with matching SHA-256:
+
+`0ef92b13e35a1785831ede359280b373f8f2dd9043f8e77afd43aa1616d824a1`
+
+
+
 This repository contains the current transferable Lean sources, on-device Android ARM64 build receipts, and consolidated checkpoint documentation for the AQARION Lean work.
 
 ## Contents
