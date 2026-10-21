@@ -1,1 +1,7 @@
+# Current verification checkpoint
+
+Fresh compilation and the four-declaration axiom audit passed. See [VERIFICATION.md](VERIFICATION.md).
+
+## Historical checkpoint below
+
 Finite-Anchor Join Rigidity — local verification checkpoint, 2026-10-19. Sources: AqarionAnchorBase.lean and AqarionJoin.lean. The join is constructed from finite chains; generator inclusion, leastness, forward preservation, and finite-anchor join rigidity are formalized. Only the selected anchor requires an explicitly finite quotient and backward stability; every generator is assumed forward-preserved. Neither the state type nor indexing family is assumed finite. The separate join-module invocation recorded exit 0. join_universal_property reported no axioms; finite_anchor_join_rigidity reported only propext, Classical.choice, Quot.sound. Repository source copies were compared with the successful local workspace sources and matched exactly. The latest anchor invocation was interrupted and recorded exit 130; the successful join check used an available compiled anchor module. A fresh uninterrupted two-stage rebuild and independent replay remain outstanding. No historical novelty or independent-audit claim is made. Compiler: Lean 4.35.0-rc4; invocation settings: -j1 -M768 -DElab.async=false. This document summarizes user-supplied terminal evidence; it is not a newly captured compiler log.

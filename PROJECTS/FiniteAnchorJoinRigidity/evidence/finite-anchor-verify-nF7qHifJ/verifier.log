@@ -1,0 +1,15 @@
+AqarionAnchorBase.lean: OK
+AqarionJoin.lean: OK
+Lean (version 4.35.0-rc4, aarch64-unknown-linux-gnu, commit c29b6dda4f7c20e3eeaa717c4e565663c5cfa364, Release)
+BUILD_DIRECTORY=/tmp/finite-anchor-verify-nF7qHifJ
+BUILDING=AqarionAnchorBase LOG=/tmp/finite-anchor-verify-nF7qHifJ/AqarionAnchorBase.log
+BUILD_PASS=AqarionAnchorBase
+BUILDING=AqarionJoin LOG=/tmp/finite-anchor-verify-nF7qHifJ/AqarionJoin.log
+BUILD_PASS=AqarionJoin
+CHECKING_FOUR_AXIOM_REPORTS
+'AqarionFiniteBridge.finite_quotient_pullback_rigidity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AqarionAnchor.finite_anchor_rigidity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AqarionJoin.join_universal_property' does not depend on any axioms
+'AqarionJoin.finite_anchor_join_rigidity' depends on axioms: [propext, Classical.choice, Quot.sound]
+FINITE_ANCHOR_VERIFICATION=PASS
+BUILD_RECEIPT=/tmp/finite-anchor-verify-nF7qHifJ

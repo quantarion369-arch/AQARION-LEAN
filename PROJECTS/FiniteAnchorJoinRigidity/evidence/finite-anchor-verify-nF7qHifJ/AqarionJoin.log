@@ -1,0 +1,9 @@
+'AqarionJoin.join_universal_property' does not depend on any axioms
+'AqarionJoin.finite_anchor_join_rigidity' depends on axioms: [propext, Classical.choice, Quot.sound]
+AqarionJoin.finite_anchor_join_rigidity {X I : Type} (T : X → X) (E : I → Setoid X) (a : I) (n : Nat)
+  (enc : @Quotient X (E a) → Fin n) (dec : Fin n → @Quotient X (E a))
+  (hleft : ∀ (q : @Quotient X (E a)), @Eq (@Quotient X (E a)) (dec (enc q)) q)
+  (hright : ∀ (i : Fin n), @Eq (Fin n) (enc (dec i)) i)
+  (hback : ∀ (x y : X), @Setoid.r X (E a) (T x) (T y) → @Setoid.r X (E a) x y)
+  (hforward : ∀ (i : I) (x y : X), @Setoid.r X (E i) x y → @Setoid.r X (E i) (T x) (T y)) (x y : X) :
+  Iff (@Setoid.r X (@joinSetoid X I E) x y) (@Setoid.r X (@joinSetoid X I E) (T x) (T y))

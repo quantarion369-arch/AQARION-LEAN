@@ -1,0 +1,86 @@
+'AqarionStructuralRigidity.pullback_rigidity_of_quotient_selfmap_principle' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+theorem AqarionStructuralRigidity.pullback_rigidity_of_quotient_selfmap_principle.{u} : ∀ {X : Type u} (T : X → X)
+  (E : Setoid X),
+  (∀ (f : Quotient E → Quotient E), (∀ (a b : Quotient E), f a = f b → a = b) → ∀ (b : Quotient E), ∃ a, f a = b) →
+    (∀ (x y : X), Setoid.r (T x) (T y) → Setoid.r x y) → ∀ (x y : X), Setoid.r x y ↔ Setoid.r (T x) (T y) :=
+fun {X} T E hfinite hback =>
+  let q := Quotient.mk E;
+  have hex := fun a => Quotient.inductionOn a fun x => Exists.intro x rfl;
+  let rep := fun a => Classical.choose (hex a);
+  have hrep := fun a => Classical.choose_spec (hex a);
+  let f := fun a => q (T (rep a));
+  have hinj := fun a b hab =>
+    have hrel := Quotient.exact hab;
+    have heq := Quotient.sound (hback (rep a) (rep b) hrel);
+    Eq.trans (Eq.symm (hrep a)) (Eq.trans heq (hrep b));
+  have hsurj := hfinite f hinj;
+  have hcanonical := fun x =>
+    Exists.casesOn (hsurj (q (T x))) fun a ha =>
+      have hrel := Quotient.exact ha;
+      have heq := Quotient.sound (hback (rep a) x hrel);
+      have hclass := Eq.trans (Eq.symm (hrep a)) heq;
+      Eq.trans (Eq.symm (congrArg f hclass)) ha;
+  fun x y =>
+  {
+    mp := fun hxy =>
+      have hclasses := Quotient.sound hxy;
+      have himages := Eq.trans (Eq.symm (hcanonical x)) (Eq.trans (congrArg f hclasses) (hcanonical y));
+      Quotient.exact himages,
+    mpr := hback x y }
+'AqarionFiniteBridge.fin_injective_implies_surjective' depends on axioms: [propext, Quot.sound]
+'AqarionFiniteBridge.finite_quotient_pullback_rigidity' depends on axioms: [propext, Classical.choice, Quot.sound]
+theorem AqarionFiniteBridge.finite_quotient_pullback_rigidity.{u} : ∀ {X : Type u} (T : X → X) (E : Setoid X) (n : Nat)
+  (enc : Quotient E → Fin n) (dec : Fin n → Quotient E),
+  (∀ (a : Quotient E), dec (enc a) = a) →
+    (∀ (i : Fin n), enc (dec i) = i) →
+      (∀ (x y : X), Setoid.r (T x) (T y) → Setoid.r x y) → ∀ (x y : X), Setoid.r x y ↔ Setoid.r (T x) (T y) :=
+fun {X} T E n enc dec hleft hright hback =>
+  AqarionStructuralRigidity.pullback_rigidity_of_quotient_selfmap_principle T E
+    (fun f hinj => selfmap_principle_of_encoding n enc dec hleft hright f hinj) hback
+'AqarionAnchor.selfmap_principle_of_injection' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AqarionAnchor.injective_of_surjective' depends on axioms: [Classical.choice]
+'AqarionAnchor.finite_anchor_rigidity' depends on axioms: [propext, Classical.choice, Quot.sound]
+theorem AqarionAnchor.finite_anchor_rigidity : ∀ {X : Type} (T : X → X) (E J : Setoid X) (n : Nat)
+  (enc : Quotient E → Fin n) (dec : Fin n → Quotient E),
+  (∀ (a : Quotient E), dec (enc a) = a) →
+    (∀ (i : Fin n), enc (dec i) = i) →
+      (∀ (x y : X), Setoid.r (T x) (T y) → Setoid.r x y) →
+        (∀ (x y : X), Setoid.r x y → Setoid.r x y) →
+          (∀ (x y : X), Setoid.r x y → Setoid.r (T x) (T y)) → ∀ (x y : X), Setoid.r x y ↔ Setoid.r (T x) (T y) :=
+fun {X} T E J n enc dec hleft hright hback hle hforward =>
+  let qE := Quotient.mk E;
+  let qJ := Quotient.mk J;
+  have hexE := fun a => Quotient.inductionOn a fun x => Exists.intro x rfl;
+  let repE := fun a => Classical.choose (hexE a);
+  have hrepE := fun a => Classical.choose_spec (hexE a);
+  have hexJ := fun a => Quotient.inductionOn a fun x => Exists.intro x rfl;
+  let repJ := fun a => Classical.choose (hexJ a);
+  have hrepJ := fun a => Classical.choose_spec (hexJ a);
+  let encodeJ := fun a => enc (qE (repJ a));
+  have hencodeJ := fun a b hab =>
+    have heq :=
+      have hh := congrArg dec hab;
+      Eq.mp (congr (congrArg Eq ((fun a => hleft a) (qE (repJ a)))) ((fun a => hleft a) (qE (repJ b)))) hh;
+    have hrel := Quotient.exact heq;
+    have hj := Quotient.sound (hle (repJ a) (repJ b) hrel);
+    Eq.trans (Eq.symm (hrepJ a)) (Eq.trans hj (hrepJ b));
+  let fE := fun a => qE (T (repE a));
+  have hfE := fun a b hab =>
+    have hrel := Quotient.exact hab;
+    have heq := Quotient.sound (hback (repE a) (repE b) hrel);
+    Eq.trans (Eq.symm (hrepE a)) (Eq.trans heq (hrepE b));
+  have hsurjE := AqarionFiniteBridge.selfmap_principle_of_encoding n enc dec hleft hright fE hfE;
+  let fJ := Quotient.lift (fun x => qJ (T x)) fun x y h => Quotient.sound (hforward x y h);
+  have hsurjJ := fun b =>
+    Exists.casesOn (hsurjE (qE (repJ b))) fun a ha =>
+      have he := Quotient.exact ha;
+      have hj := Quotient.sound (hle (T (repE a)) (repJ b) he);
+      Exists.intro (qJ (repE a)) (id (Eq.trans hj (hrepJ b)));
+  have hinjJ := injective_of_surjective (selfmap_principle_of_injection n encodeJ hencodeJ) fJ hsurjJ;
+  fun x y =>
+  { mp := hforward x y,
+    mpr := fun h =>
+      have himages := Quotient.sound h;
+      Quotient.exact (hinjJ (Quotient.mk J x) (Quotient.mk J y) himages) }

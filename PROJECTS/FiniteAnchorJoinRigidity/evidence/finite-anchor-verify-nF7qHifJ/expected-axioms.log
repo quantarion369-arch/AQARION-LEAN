@@ -1,0 +1,4 @@
+'AqarionFiniteBridge.finite_quotient_pullback_rigidity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AqarionAnchor.finite_anchor_rigidity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AqarionJoin.join_universal_property' does not depend on any axioms
+'AqarionJoin.finite_anchor_join_rigidity' depends on axioms: [propext, Classical.choice, Quot.sound]

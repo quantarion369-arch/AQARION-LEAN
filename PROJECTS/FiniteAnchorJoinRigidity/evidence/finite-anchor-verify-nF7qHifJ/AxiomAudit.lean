@@ -1,0 +1,5 @@
+import AqarionJoin
+#print axioms AqarionFiniteBridge.finite_quotient_pullback_rigidity
+#print axioms AqarionAnchor.finite_anchor_rigidity
+#print axioms AqarionJoin.join_universal_property
+#print axioms AqarionJoin.finite_anchor_join_rigidity
