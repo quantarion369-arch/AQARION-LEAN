@@ -16,6 +16,8 @@ permissions:
 jobs:
   verify:
     runs-on: ubuntu-24.04
+    env:
+      LEAN_MAX_MEMORY_MB: "4096"
     timeout-minutes: 35
     steps:
       - uses: actions/checkout@v4

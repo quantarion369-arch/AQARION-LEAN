@@ -28,7 +28,7 @@ trap 'rc=$?; if [ "$rc" -ne 0 ]; then
     printf "VERIFICATION_FAILED: exit=%s directory=%s
 " "$rc" "$out"
     if [ -n "$log" ] && [ -f "$log" ]; then
-        tail -n 40 "$log"
+        cat -- "$log"
     fi
 fi' EXIT
 
@@ -58,7 +58,7 @@ for module in AqarionAnchorBase AqarionJoin; do
     log="$out/$module.log"
     printf 'BUILDING=%s LOG=%s
 ' "$module" "$log"
-    lean -j1 -M768 -DElab.async=false \
+    lean -j1 "-M${LEAN_MAX_MEMORY_MB:-768}" -DElab.async=false \
         -o "$module.olean" "$module.lean" > "$log" 2>&1
     test -s "$module.olean"
     printf 'BUILD_PASS=%s
@@ -68,7 +68,7 @@ done
 log="$out/axioms.log"
 printf '%s
 ' 'CHECKING_FOUR_AXIOM_REPORTS'
-lean -j1 -M768 -DElab.async=false AxiomAudit.lean > "$log" 2>&1
+lean -j1 "-M${LEAN_MAX_MEMORY_MB:-768}" -DElab.async=false AxiomAudit.lean > "$log" 2>&1
 diff -u expected-axioms.log "$log"
 cat "$log"
 
