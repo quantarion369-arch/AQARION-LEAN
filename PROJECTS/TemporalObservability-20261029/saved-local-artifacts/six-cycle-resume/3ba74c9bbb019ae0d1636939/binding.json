@@ -1,0 +1,15 @@
+{
+  "origin": "/root/AQARION_EXPERIMENTS/six-cycle-lean-certificate.repair-20261029-r4",
+  "source_sha256": "ba2a16818c4b4c5a35ff57dee30680845ec56916f0416e5d0957cd0d77d19967",
+  "certificate_sha256": "96c6482faaca5dd2cc62b3ff8bfafe0693b5aed2c99bbe8681b12b9e056a99a3",
+  "lean_sha256": "72d674b469a5732f69b4d6408c215040c227cc25b4c6b7c7826c16fe19e088b3",
+  "LEAN_PATH": "/root/AQARION_EXPERIMENTS/six-cycle-lean-certificate.WtKFEDM8:/root/AQARION_EXPERIMENTS/temporal-rank-product-repair.MXchAje1:/root/AQARION_EXPERIMENTS/finite-bridge-no-timer.9NodBzNG:/root/aqarion-lean/.lake/packages/mathlib/.lake/build/lib/lean:/root/aqarion-lean-transfer/PROJECTS/PBCore006/.lake/packages/plausible/.lake/build/lib/lean:/root/aqarion-lean-transfer/PROJECTS/PBCore006/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/root/aqarion-lean-transfer/PROJECTS/PBCore006/.lake/packages/importGraph/.lake/build/lib/lean:/root/aqarion-lean-transfer/PROJECTS/PBCore006/.lake/packages/proofwidgets/.lake/build/lib/lean:/root/aqarion-lean-transfer/PROJECTS/PBCore006/.lake/packages/aesop/.lake/build/lib/lean:/root/aqarion-lean-transfer/PROJECTS/PBCore006/.lake/packages/Qq/.lake/build/lib/lean:/root/aqarion-lean-transfer/PROJECTS/PBCore006/.lake/packages/batteries/.lake/build/lib/lean",
+  "dependencies": {
+    "FiniteRationalBridge.lean": "7b251d01587737920f3268dc381946697d952ce935e199ed2c1343a77185f9c7",
+    "FiniteRationalBridge.olean": "a9d0caee46f78c79e80eec10e79538406a92db002b92feb50e4b8cc6a29157bf",
+    "TemporalAnnihilation.lean": "7747304607649651f88f2a25d8b2423076c79db5535a5f69778ef15ab9483d76",
+    "TemporalAnnihilation.olean": "92bb50dd21909d2d3b9965633618ba4de360eb451753df7ced4e7a7d2c16ea49",
+    "TemporalMatrixRank.lean": "90932ffabe8bb03f5f8fbacae6c76112b5d5a6dbc52e9aec2b200de73a8f0568",
+    "TemporalMatrixRank.olean": "76ee462d18e90012fc229ba69e9a6b95f49f9b6c4a95ec5af32b3bffdbb6642a"
+  }
+}

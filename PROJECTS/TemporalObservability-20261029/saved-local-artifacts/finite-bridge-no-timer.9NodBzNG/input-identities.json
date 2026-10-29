@@ -1,0 +1,12 @@
+{
+  "source_directory": "/root/AQARION_EXPERIMENTS/finite-rational-local-sum.MJphQE4w",
+  "source_hashes": {
+    "TemporalAnnihilation.lean": "7747304607649651f88f2a25d8b2423076c79db5535a5f69778ef15ab9483d76",
+    "FiniteRationalBridge.lean": "7b251d01587737920f3268dc381946697d952ce935e199ed2c1343a77185f9c7"
+  },
+  "lean_executable": "/root/.elan/toolchains/leanprover--lean4---v4.35.0-rc4/bin/lean",
+  "lean_executable_sha256": "72d674b469a5732f69b4d6408c215040c227cc25b4c6b7c7826c16fe19e088b3",
+  "saved_environment_record_sha256": "b53161681ac9c6e7fa25c21e4d5f19f0aa0fa45dae9251e1c0c8fa106c0b97bc",
+  "LEAN_PATH": "/root/AQARION_EXPERIMENTS/finite-bridge-no-timer.9NodBzNG:/root/aqarion-lean/.lake/packages/mathlib/.lake/build/lib/lean:/root/aqarion-lean-transfer/PROJECTS/PBCore006/.lake/packages/plausible/.lake/build/lib/lean:/root/aqarion-lean-transfer/PROJECTS/PBCore006/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/root/aqarion-lean-transfer/PROJECTS/PBCore006/.lake/packages/importGraph/.lake/build/lib/lean:/root/aqarion-lean-transfer/PROJECTS/PBCore006/.lake/packages/proofwidgets/.lake/build/lib/lean:/root/aqarion-lean-transfer/PROJECTS/PBCore006/.lake/packages/aesop/.lake/build/lib/lean:/root/aqarion-lean-transfer/PROJECTS/PBCore006/.lake/packages/Qq/.lake/build/lib/lean:/root/aqarion-lean-transfer/PROJECTS/PBCore006/.lake/packages/batteries/.lake/build/lib/lean",
+  "dependency_note": "Reuses the previously recorded compiled-library paths; does not rebuild or reauthenticate those dependency artifacts."
+}

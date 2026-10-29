@@ -1,0 +1,12 @@
+{
+  "command": [
+    "/root/.elan/toolchains/leanprover--lean4---v4.35.0-rc4/bin/lean",
+    "-o",
+    "/root/AQARION_EXPERIMENTS/finite-bridge-no-timer.9NodBzNG/TemporalAnnihilation.olean",
+    "/root/AQARION_EXPERIMENTS/finite-bridge-no-timer.9NodBzNG/TemporalAnnihilation.lean"
+  ],
+  "cwd": "/root/AQARION_EXPERIMENTS/finite-bridge-no-timer.9NodBzNG",
+  "LEAN_PATH": "/root/AQARION_EXPERIMENTS/finite-bridge-no-timer.9NodBzNG:/root/aqarion-lean/.lake/packages/mathlib/.lake/build/lib/lean:/root/aqarion-lean-transfer/PROJECTS/PBCore006/.lake/packages/plausible/.lake/build/lib/lean:/root/aqarion-lean-transfer/PROJECTS/PBCore006/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/root/aqarion-lean-transfer/PROJECTS/PBCore006/.lake/packages/importGraph/.lake/build/lib/lean:/root/aqarion-lean-transfer/PROJECTS/PBCore006/.lake/packages/proofwidgets/.lake/build/lib/lean:/root/aqarion-lean-transfer/PROJECTS/PBCore006/.lake/packages/aesop/.lake/build/lib/lean:/root/aqarion-lean-transfer/PROJECTS/PBCore006/.lake/packages/Qq/.lake/build/lib/lean:/root/aqarion-lean-transfer/PROJECTS/PBCore006/.lake/packages/batteries/.lake/build/lib/lean",
+  "wall_clock_limit": null,
+  "custom_memory_limit": null
+}

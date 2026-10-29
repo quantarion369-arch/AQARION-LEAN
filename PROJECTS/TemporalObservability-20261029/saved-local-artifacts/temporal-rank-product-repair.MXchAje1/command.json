@@ -1,0 +1,16 @@
+{
+  "command": [
+    "/root/.elan/toolchains/leanprover--lean4---v4.35.0-rc4/bin/lean",
+    "-j1",
+    "-o",
+    "/root/AQARION_EXPERIMENTS/temporal-rank-product-repair.MXchAje1/TemporalMatrixRank.olean",
+    "/root/AQARION_EXPERIMENTS/temporal-rank-product-repair.MXchAje1/TemporalMatrixRank.lean"
+  ],
+  "cwd": "/root/AQARION_EXPERIMENTS/temporal-rank-product-repair.MXchAje1",
+  "LEAN_PATH": "/root/AQARION_EXPERIMENTS/temporal-rank-product-repair.MXchAje1:/root/AQARION_EXPERIMENTS/finite-bridge-no-timer.9NodBzNG:/root/aqarion-lean/.lake/packages/mathlib/.lake/build/lib/lean:/root/aqarion-lean-transfer/PROJECTS/PBCore006/.lake/packages/plausible/.lake/build/lib/lean:/root/aqarion-lean-transfer/PROJECTS/PBCore006/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/root/aqarion-lean-transfer/PROJECTS/PBCore006/.lake/packages/importGraph/.lake/build/lib/lean:/root/aqarion-lean-transfer/PROJECTS/PBCore006/.lake/packages/proofwidgets/.lake/build/lib/lean:/root/aqarion-lean-transfer/PROJECTS/PBCore006/.lake/packages/aesop/.lake/build/lib/lean:/root/aqarion-lean-transfer/PROJECTS/PBCore006/.lake/packages/Qq/.lake/build/lib/lean:/root/aqarion-lean-transfer/PROJECTS/PBCore006/.lake/packages/batteries/.lake/build/lib/lean",
+  "failed_source_sha256": "6c4b37a630e5bbda8d42ebb51dae6534d9ac72a4005396ee64ee8984d0c57493",
+  "repaired_source_sha256": "90932ffabe8bb03f5f8fbacae6c76112b5d5a6dbc52e9aec2b200de73a8f0568",
+  "bridge_manifest_sha256": "0f82883173129d05393c46fa104317e6f61001e4ab8e0d195ae7c760900319d8",
+  "automatic_timeout": null,
+  "custom_memory_limit": null
+}

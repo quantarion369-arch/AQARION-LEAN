@@ -1,0 +1,15 @@
+AQARIONSixCycle.rank_five : AQARIONSixCycle.A.rank = 5
+AQARIONSixCycle.full_support (i : Fin 6) : AQARIONSixCycle.v i ≠ 0
+AQARIONSixCycle.all_observations_annihilated (t : ℕ) :
+  AQARIONFinite.pairing AQARIONSixCycle.v (AQARIONTemporal.observeAt AQARIONSixCycle.T AQARIONSixCycle.h t) = 0
+'AQARIONSixCycle.full_support' depends on axioms: [propext, Quot.sound]
+'AQARIONSixCycle.v_nonzero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AQARIONSixCycle.constant_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AQARIONSixCycle.initial_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AQARIONSixCycle.eigen' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AQARIONSixCycle.minor_mul_inverse' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AQARIONSixCycle.minor_nonzero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AQARIONSixCycle.python_minor_eq_transpose' depends on axioms: [propext, Quot.sound]
+'AQARIONSixCycle.python_minor_nonzero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AQARIONSixCycle.rank_five' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AQARIONSixCycle.all_observations_annihilated' depends on axioms: [propext, Classical.choice, Quot.sound]

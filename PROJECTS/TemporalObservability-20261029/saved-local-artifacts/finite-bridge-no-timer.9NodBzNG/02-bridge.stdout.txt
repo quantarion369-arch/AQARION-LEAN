@@ -1,0 +1,13 @@
+AQARIONFinite.duality {n : ℕ} (T : Fin n → Fin n) (v g : Fin n → ℚ) :
+  (AQARIONFinite.pairing v fun x => g (T x)) = AQARIONFinite.pairing (AQARIONFinite.push T v) g
+AQARIONFinite.homogeneous {n : ℕ} (a : ℚ) (v g : Fin n → ℚ) :
+  AQARIONFinite.pairing (AQARIONFinite.scaleWeight a v) g = a * AQARIONFinite.pairing v g
+AQARIONFinite.annihilates_all_observations {n : ℕ} (T : Fin n → Fin n) (v h : Fin n → ℚ) (lambda : ℚ)
+  (eigen : AQARIONFinite.push T v = AQARIONFinite.scaleWeight lambda v) (initial_zero : AQARIONFinite.pairing v h = 0)
+  (t : ℕ) : AQARIONFinite.pairing v (AQARIONTemporal.observeAt T h t) = 0
+'AQARIONFinite.duality' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AQARIONFinite.homogeneous' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AQARIONFinite.annihilates_all_observations' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AQARIONFinite.duality' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AQARIONFinite.homogeneous' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AQARIONFinite.annihilates_all_observations' depends on axioms: [propext, Classical.choice, Quot.sound]

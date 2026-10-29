@@ -1,0 +1,95 @@
+/root/AQARION_EXPERIMENTS/six-cycle-resume/9b59d433c4fdfbaffe0fb4c6/work/SixCycleCertificate.lean:62:2: error: Tactic `decide` failed to reduce
+  @decide (∑ i, v i = 0) (instDecidableEqRat (∑ i, v i) 0)
+to `true` or `false`.
+
+After unfolding the instances `instDecidableEqRat`, `Int.decEq`, `Int.instDecidableEq`, and `instDecidableEqRat.decEq`, reduction got stuck at
+  match
+    (((fun i => v i) ((fun i => i) ⟨0, ⋯⟩)).add
+        (List.foldr (fun x1 x2 => x1 + x2) 0
+          (List.map (fun i => v i)
+            ((fun x1 x2 => (fun i => i) x1 :: x2) ⟨1, ⋯⟩
+              ((fun x1 x2 => (fun i => i) x1 :: x2) ⟨2, ⋯⟩
+                ((fun x1 x2 => (fun i => i) x1 :: x2) ⟨3, ⋯⟩
+                  ((fun x1 x2 => (fun i => i) x1 :: x2) ⟨4, ⋯⟩
+                    ((fun x1 x2 => (fun i => i) x1 :: x2) ⟨5, ⋯⟩ [])))))))).num,
+    ↑0 with
+  | Int.ofNat a, Int.ofNat b =>
+    match decEq a b with
+    | { decide := true, reflects_decide := h } => isTrue ⋯
+    | { decide := false, reflects_decide := h } => isFalse ⋯
+  | Int.ofNat a, Int.negSucc a_1 => isFalse ⋯
+  | Int.negSucc a, Int.ofNat a_1 => isFalse ⋯
+  | Int.negSucc a, Int.negSucc b =>
+    match decEq a b with
+    | { decide := true, reflects_decide := h } => isTrue ⋯
+    | { decide := false, reflects_decide := h } => isFalse ⋯
+/root/AQARION_EXPERIMENTS/six-cycle-resume/9b59d433c4fdfbaffe0fb4c6/work/SixCycleCertificate.lean:65:2: error: Tactic `decide` failed to reduce
+  @decide (AQARIONFinite.pairing v h = 0) (instDecidableEqRat (AQARIONFinite.pairing v h) 0)
+to `true` or `false`.
+
+After unfolding the instances `instDecidableEqRat`, `Int.decEq`, `Int.instDecidableEq`, and `instDecidableEqRat.decEq`, reduction got stuck at
+  match
+    (((fun x => v x * h x) ((fun i => i) ⟨0, ⋯⟩)).add
+        (List.foldr (fun x1 x2 => x1 + x2) 0
+          (List.map (fun x => v x * h x)
+            ((fun x1 x2 => (fun i => i) x1 :: x2) ⟨1, ⋯⟩
+              ((fun x1 x2 => (fun i => i) x1 :: x2) ⟨2, ⋯⟩
+                ((fun x1 x2 => (fun i => i) x1 :: x2) ⟨3, ⋯⟩
+                  ((fun x1 x2 => (fun i => i) x1 :: x2) ⟨4, ⋯⟩
+                    ((fun x1 x2 => (fun i => i) x1 :: x2) ⟨5, ⋯⟩ [])))))))).num,
+    ↑0 with
+  | Int.ofNat a, Int.ofNat b =>
+    match decEq a b with
+    | { decide := true, reflects_decide := h } => isTrue ⋯
+    | { decide := false, reflects_decide := h } => isFalse ⋯
+  | Int.ofNat a, Int.negSucc a_1 => isFalse ⋯
+  | Int.negSucc a, Int.ofNat a_1 => isFalse ⋯
+  | Int.negSucc a, Int.negSucc b =>
+    match decEq a b with
+    | { decide := true, reflects_decide := h } => isTrue ⋯
+    | { decide := false, reflects_decide := h } => isFalse ⋯
+/root/AQARION_EXPERIMENTS/six-cycle-resume/9b59d433c4fdfbaffe0fb4c6/work/SixCycleCertificate.lean:74:4: error: Tactic `decide` failed to reduce
+  @decide (∀ (i : Fin 6), AQARIONFinite.push T v i = AQARIONFinite.scaleWeight (-1) v i)
+    (Nat.decidableForallFin fun i => AQARIONFinite.push T v i = AQARIONFinite.scaleWeight (-1) v i)
+to `true` or `false`.
+
+After unfolding the instances `decidable_of_decidable_of_iff`, `decidable_of_iff`, `instDecidableEqRat`, `isTrue`, `Int.decEq`, `Int.instDecidableEq`, `Nat.decidableBallLT`, `Nat.decidableForallFin`, and `instDecidableEqRat.decEq`, reduction got stuck at
+  match
+    (((fun x => if T x = ⟨0, ⋯⟩ then v x else 0) ((fun i => i) ⟨0, ⋯⟩)).add
+        (List.foldr (fun x1 x2 => x1 + x2) 0
+          (List.map (fun x => if T x = ⟨0, ⋯⟩ then v x else 0)
+            ((fun x1 x2 => (fun i => i) x1 :: x2) ⟨1, ⋯⟩
+              ((fun x1 x2 => (fun i => i) x1 :: x2) ⟨2, ⋯⟩
+                ((fun x1 x2 => (fun i => i) x1 :: x2) ⟨3, ⋯⟩
+                  ((fun x1 x2 => (fun i => i) x1 :: x2) ⟨4, ⋯⟩
+                    ((fun x1 x2 => (fun i => i) x1 :: x2) ⟨5, ⋯⟩ [])))))))).num,
+    ((-1).mul (v ⟨0, ⋯⟩)).num with
+  | Int.ofNat a, Int.ofNat b =>
+    match decEq a b with
+    | { decide := true, reflects_decide := h } => isTrue ⋯
+    | { decide := false, reflects_decide := h } => isFalse ⋯
+  | Int.ofNat a, Int.negSucc a_1 => isFalse ⋯
+  | Int.negSucc a, Int.ofNat a_1 => isFalse ⋯
+  | Int.negSucc a, Int.negSucc b =>
+    match decEq a b with
+    | { decide := true, reflects_decide := h } => isTrue ⋯
+    | { decide := false, reflects_decide := h } => isFalse ⋯
+/root/AQARION_EXPERIMENTS/six-cycle-resume/9b59d433c4fdfbaffe0fb4c6/work/SixCycleCertificate.lean:83:4: error: failed to synthesize
+  Decidable (∀ (i j : Fin 5), (minor * inverseWitness) i j = 1 i j)
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+AQARIONSixCycle.rank_five : AQARIONSixCycle.A.rank = 5
+AQARIONSixCycle.full_support (i : Fin 6) : AQARIONSixCycle.v i ≠ 0
+AQARIONSixCycle.all_observations_annihilated (t : ℕ) :
+  AQARIONFinite.pairing AQARIONSixCycle.v (AQARIONTemporal.observeAt AQARIONSixCycle.T AQARIONSixCycle.h t) = 0
+'AQARIONSixCycle.full_support' depends on axioms: [propext, Quot.sound]
+'AQARIONSixCycle.v_nonzero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AQARIONSixCycle.constant_zero' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'AQARIONSixCycle.initial_zero' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'AQARIONSixCycle.eigen' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'AQARIONSixCycle.minor_mul_inverse' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'AQARIONSixCycle.minor_nonzero' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'AQARIONSixCycle.python_minor_eq_transpose' depends on axioms: [propext, Quot.sound]
+'AQARIONSixCycle.python_minor_nonzero' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'AQARIONSixCycle.rank_five' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'AQARIONSixCycle.all_observations_annihilated' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]

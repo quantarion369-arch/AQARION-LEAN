@@ -1,0 +1,6 @@
+AQARIONTemporal.annihilates_all_observations.{u, v, r} {X : Type u} {W : Type v} {R : Type r} (T : X → X) (h : X → R)
+  (pair : W → (X → R) → R) (push : W → W) (scale : R → W → W) (mul : R → R → R) (zero lambda : R) (w : W)
+  (mul_zero : mul lambda zero = zero) (duality : ∀ (g : X → R), (pair w fun x => g (T x)) = pair (push w) g)
+  (eigen : push w = scale lambda w) (homogeneous : ∀ (g : X → R), pair (scale lambda w) g = mul lambda (pair w g))
+  (initial_zero : pair w h = zero) (t : Nat) : pair w (AQARIONTemporal.observeAt T h t) = zero
+'AQARIONTemporal.annihilates_all_observations' does not depend on any axioms

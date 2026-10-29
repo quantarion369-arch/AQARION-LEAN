@@ -1,0 +1,43 @@
+{
+  "schema": "AQARION-temporal-rank-certificate-v2",
+  "n": 6,
+  "transition": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    0
+  ],
+  "h": [
+    1,
+    1,
+    0,
+    0,
+    0,
+    0
+  ],
+  "v": [
+    1,
+    -1,
+    1,
+    -1,
+    1,
+    -1
+  ],
+  "lambda": -1,
+  "features": [
+    "one",
+    0,
+    1,
+    2,
+    3
+  ],
+  "states": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ]
+}

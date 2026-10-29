@@ -1,0 +1,12 @@
+{
+  "command": [
+    "/root/.elan/toolchains/leanprover--lean4---v4.35.0-rc4/bin/lean",
+    "-j1",
+    "-o",
+    "/root/AQARION_EXPERIMENTS/six-cycle-resume/9b59d433c4fdfbaffe0fb4c6/attempt-4/SixCycleCertificate.olean",
+    "/root/AQARION_EXPERIMENTS/six-cycle-resume/9b59d433c4fdfbaffe0fb4c6/work/SixCycleCertificate.lean"
+  ],
+  "cwd": "/root/AQARION_EXPERIMENTS/six-cycle-resume/9b59d433c4fdfbaffe0fb4c6/work",
+  "LEAN_PATH": "/root/AQARION_EXPERIMENTS/six-cycle-resume/9b59d433c4fdfbaffe0fb4c6/work:/root/AQARION_EXPERIMENTS/six-cycle-lean-certificate.WtKFEDM8:/root/AQARION_EXPERIMENTS/temporal-rank-product-repair.MXchAje1:/root/AQARION_EXPERIMENTS/finite-bridge-no-timer.9NodBzNG:/root/aqarion-lean/.lake/packages/mathlib/.lake/build/lib/lean:/root/aqarion-lean-transfer/PROJECTS/PBCore006/.lake/packages/plausible/.lake/build/lib/lean:/root/aqarion-lean-transfer/PROJECTS/PBCore006/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/root/aqarion-lean-transfer/PROJECTS/PBCore006/.lake/packages/importGraph/.lake/build/lib/lean:/root/aqarion-lean-transfer/PROJECTS/PBCore006/.lake/packages/proofwidgets/.lake/build/lib/lean:/root/aqarion-lean-transfer/PROJECTS/PBCore006/.lake/packages/aesop/.lake/build/lib/lean:/root/aqarion-lean-transfer/PROJECTS/PBCore006/.lake/packages/Qq/.lake/build/lib/lean:/root/aqarion-lean-transfer/PROJECTS/PBCore006/.lake/packages/batteries/.lake/build/lib/lean",
+  "automatic_timeout": null
+}

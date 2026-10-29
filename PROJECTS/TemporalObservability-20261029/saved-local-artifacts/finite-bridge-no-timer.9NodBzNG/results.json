@@ -1,0 +1,52 @@
+{
+  "status": "BRIDGE_COMPILED_AND_AXIOMS_CHECKED",
+  "automatic_wall_clock_limit": null,
+  "automatic_termination_signals": false,
+  "custom_lean_memory_limit": null,
+  "lake_invoked": false,
+  "installation_or_download_requested": false,
+  "full_temporal_rank_soundness": "not established by this stage",
+  "python_implementation_verified": false,
+  "axiom_reports": {
+    "AQARIONFinite.duality": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "AQARIONFinite.homogeneous": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "AQARIONFinite.annihilates_all_observations": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ]
+  },
+  "original_sources_unchanged": true,
+  "scope": "Pairing duality, rational homogeneity, and propagation of observation annihilation\u2014not the full temporal-rank minor soundness theorem.",
+  "stages": [
+    {
+      "stage": "01-foundation",
+      "compiler_exit": 0,
+      "elapsed_seconds": 34.6736058480019,
+      "output_artifact_present": true,
+      "automatic_timeout": false
+    },
+    {
+      "stage": "02-bridge",
+      "compiler_exit": 0,
+      "elapsed_seconds": 127.26862308500131,
+      "output_artifact_present": true,
+      "automatic_timeout": false
+    },
+    {
+      "stage": "03-axiom-audit",
+      "compiler_exit": 0,
+      "elapsed_seconds": 125.80909139199503,
+      "output_artifact_present": true,
+      "automatic_timeout": false
+    }
+  ]
+}

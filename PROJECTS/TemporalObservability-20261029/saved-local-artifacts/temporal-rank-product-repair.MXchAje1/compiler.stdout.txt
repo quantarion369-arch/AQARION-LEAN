@@ -1,0 +1,26 @@
+AQARIONRank.rank_le_of_annihilator {n m : ℕ} (A : Matrix (Fin n) (Fin m) ℚ) (v : Fin n → ℚ) (hv : v ≠ 0)
+  (annihilates : ∀ (j : Fin m), ∑ i, v i * A i j = 0) : A.rank ≤ n - 1
+AQARIONRank.rank_ge_of_nonzero_minor {n m k : ℕ} (A : Matrix (Fin n) (Fin m) ℚ) (rows : Fin k → Fin n)
+  (cols : Fin k → Fin m) (minor_nonzero : (A.submatrix rows cols).det ≠ 0) : k ≤ A.rank
+AQARIONRank.rank_eq_of_annihilator_and_minor {n m : ℕ} (A : Matrix (Fin n) (Fin m) ℚ) (v : Fin n → ℚ) (hv : v ≠ 0)
+  (annihilates : ∀ (j : Fin m), ∑ i, v i * A i j = 0) (rows : Fin (n - 1) → Fin n) (cols : Fin (n - 1) → Fin m)
+  (minor_nonzero : (A.submatrix rows cols).det ≠ 0) : A.rank = n - 1
+AQARIONRank.temporal_columns_annihilated {n m : ℕ} (T : Fin n → Fin n) (h v : Fin n → ℚ) (lambda : ℚ)
+  (tags : Fin m → Option ℕ) (constant_zero : ∑ i, v i = 0) (initial_zero : AQARIONFinite.pairing v h = 0)
+  (eigen : AQARIONFinite.push T v = AQARIONFinite.scaleWeight lambda v) (j : Fin m) :
+  ∑ i, v i * AQARIONRank.temporalMatrix T h tags i j = 0
+AQARIONRank.temporal_matrix_rank_le {n m : ℕ} (T : Fin n → Fin n) (h v : Fin n → ℚ) (lambda : ℚ)
+  (tags : Fin m → Option ℕ) (hv : v ≠ 0) (constant_zero : ∑ i, v i = 0) (initial_zero : AQARIONFinite.pairing v h = 0)
+  (eigen : AQARIONFinite.push T v = AQARIONFinite.scaleWeight lambda v) :
+  (AQARIONRank.temporalMatrix T h tags).rank ≤ n - 1
+AQARIONRank.temporal_matrix_rank_eq {n m : ℕ} (T : Fin n → Fin n) (h v : Fin n → ℚ) (lambda : ℚ)
+  (tags : Fin m → Option ℕ) (hv : v ≠ 0) (constant_zero : ∑ i, v i = 0) (initial_zero : AQARIONFinite.pairing v h = 0)
+  (eigen : AQARIONFinite.push T v = AQARIONFinite.scaleWeight lambda v) (rows : Fin (n - 1) → Fin n)
+  (cols : Fin (n - 1) → Fin m) (minor_nonzero : ((AQARIONRank.temporalMatrix T h tags).submatrix rows cols).det ≠ 0) :
+  (AQARIONRank.temporalMatrix T h tags).rank = n - 1
+'AQARIONRank.rank_le_of_annihilator' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AQARIONRank.rank_ge_of_nonzero_minor' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AQARIONRank.rank_eq_of_annihilator_and_minor' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AQARIONRank.temporal_columns_annihilated' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AQARIONRank.temporal_matrix_rank_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AQARIONRank.temporal_matrix_rank_eq' depends on axioms: [propext, Classical.choice, Quot.sound]

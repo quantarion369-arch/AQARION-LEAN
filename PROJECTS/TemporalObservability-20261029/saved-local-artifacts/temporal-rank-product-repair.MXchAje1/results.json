@@ -1,0 +1,46 @@
+{
+  "status": "TEMPORAL_MATRIX_RANK_COMPILED_AND_AXIOMS_CHECKED",
+  "automatic_timeout": false,
+  "automatic_termination_signals": false,
+  "bridge_rebuild": false,
+  "lake_invoked": false,
+  "installation_or_download_requested": false,
+  "python_implementation_verified": false,
+  "infinite_temporal_span_theorem": "not established by this module",
+  "compiler_exit": 0,
+  "elapsed_seconds": 195.64320093499555,
+  "axiom_reports": {
+    "AQARIONRank.rank_le_of_annihilator": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "AQARIONRank.rank_ge_of_nonzero_minor": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "AQARIONRank.rank_eq_of_annihilator_and_minor": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "AQARIONRank.temporal_columns_annihilated": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "AQARIONRank.temporal_matrix_rank_le": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "AQARIONRank.temporal_matrix_rank_eq": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ]
+  },
+  "failed_source_unchanged": true,
+  "scope": "Finite reconstructed temporal-matrix rank bounds and conditional exact-rank theorem; not JSON/Python correspondence or the separate infinite-span finrank statement."
+}

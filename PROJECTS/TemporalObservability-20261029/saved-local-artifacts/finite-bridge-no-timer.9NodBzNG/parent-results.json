@@ -1,0 +1,30 @@
+{
+  "status": "IMPORT_NOT_COMPLETED_SUCCESSFULLY",
+  "lake_invoked": false,
+  "installation_or_download_requested": false,
+  "checkout_operations_requested": false,
+  "full_temporal_rank_soundness": "not established",
+  "unavailable_compiled_library_dirs": [
+    "Cli"
+  ],
+  "missing_cli_policy": "Do not build or substitute Cli; fail if Lean actually requires it.",
+  "compiler_exit": -15,
+  "deadline_exceeded": true,
+  "wall_seconds": 121.0568765450007,
+  "probe_sha256": "8a2c123fef1262cd44a3509d0e06936b47beb018bf344ce7b649d3f0ea89d9b4",
+  "parent_probe_unchanged": true,
+  "dependency_library_count": 8,
+  "configuration": {
+    "command": [
+      "/root/.elan/toolchains/leanprover--lean4---v4.35.0-rc4/bin/lean",
+      "-j1",
+      "-M512",
+      "/root/AQARION_EXPERIMENTS/direct-import-populated-mathlib.21ftmz0i/ImportProbe.lean"
+    ],
+    "cwd": "/root/AQARION_EXPERIMENTS/direct-import-populated-mathlib.21ftmz0i",
+    "LEAN_PATH": "/root/aqarion-lean/.lake/packages/mathlib/.lake/build/lib/lean:/root/aqarion-lean-transfer/PROJECTS/PBCore006/.lake/packages/plausible/.lake/build/lib/lean:/root/aqarion-lean-transfer/PROJECTS/PBCore006/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/root/aqarion-lean-transfer/PROJECTS/PBCore006/.lake/packages/importGraph/.lake/build/lib/lean:/root/aqarion-lean-transfer/PROJECTS/PBCore006/.lake/packages/proofwidgets/.lake/build/lib/lean:/root/aqarion-lean-transfer/PROJECTS/PBCore006/.lake/packages/aesop/.lake/build/lib/lean:/root/aqarion-lean-transfer/PROJECTS/PBCore006/.lake/packages/Qq/.lake/build/lib/lean:/root/aqarion-lean-transfer/PROJECTS/PBCore006/.lake/packages/batteries/.lake/build/lib/lean",
+    "deadline_seconds": 120,
+    "note": "Direct compiler diagnostic with one worker and -M512; not a replay of the previous undocumented launch."
+  },
+  "compiled_cache_provenance_limit": "Source revisions and cache-directory presence were checked. This is not a reproducible-build verification of every cached artifact."
+}

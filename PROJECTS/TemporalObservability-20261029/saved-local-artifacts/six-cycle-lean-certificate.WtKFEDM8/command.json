@@ -1,0 +1,16 @@
+{
+  "command": [
+    "/root/.elan/toolchains/leanprover--lean4---v4.35.0-rc4/bin/lean",
+    "-j1",
+    "-o",
+    "/root/AQARION_EXPERIMENTS/six-cycle-lean-certificate.WtKFEDM8/SixCycleCertificate.olean",
+    "/root/AQARION_EXPERIMENTS/six-cycle-lean-certificate.WtKFEDM8/SixCycleCertificate.lean"
+  ],
+  "cwd": "/root/AQARION_EXPERIMENTS/six-cycle-lean-certificate.WtKFEDM8",
+  "LEAN_PATH": "/root/AQARION_EXPERIMENTS/six-cycle-lean-certificate.WtKFEDM8:/root/AQARION_EXPERIMENTS/temporal-rank-product-repair.MXchAje1:/root/AQARION_EXPERIMENTS/finite-bridge-no-timer.9NodBzNG:/root/aqarion-lean/.lake/packages/mathlib/.lake/build/lib/lean:/root/aqarion-lean-transfer/PROJECTS/PBCore006/.lake/packages/plausible/.lake/build/lib/lean:/root/aqarion-lean-transfer/PROJECTS/PBCore006/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/root/aqarion-lean-transfer/PROJECTS/PBCore006/.lake/packages/importGraph/.lake/build/lib/lean:/root/aqarion-lean-transfer/PROJECTS/PBCore006/.lake/packages/proofwidgets/.lake/build/lib/lean:/root/aqarion-lean-transfer/PROJECTS/PBCore006/.lake/packages/aesop/.lake/build/lib/lean:/root/aqarion-lean-transfer/PROJECTS/PBCore006/.lake/packages/Qq/.lake/build/lib/lean:/root/aqarion-lean-transfer/PROJECTS/PBCore006/.lake/packages/batteries/.lake/build/lib/lean",
+  "certificate_sha256": "96c6482faaca5dd2cc62b3ff8bfafe0693b5aed2c99bbe8681b12b9e056a99a3",
+  "source_sha256": "b0e434175722b81518e5021744a32a4e9769a913b6707335d3f1059cdaed7a41",
+  "parent_rank_manifest_sha256": "e7f7cfc07fb18a559cb57579b5cfcb2419a06ef8ecea3a8eba559fa4cc211410",
+  "fixture_binding": "Python checks the saved JSON equals this fixed fixture. Lean checks the concrete encoded instance. No general JSON decoder correctness theorem is claimed.",
+  "automatic_timeout": null
+}
