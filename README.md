@@ -29,10 +29,20 @@ This repository contains the current transferable Lean sources, on-device Androi
 
 - AQFPR006/ — repaired weighted-Bell / restricted-growth-string artifact.
 - PB006Audit/ — Lean audit and benchmark artifact.
-- PBCore006/ — source transferred for build verification and mathematical review.
+- PBCore006/ — Lean project source and build artifacts; see the successful build receipt above. Mathematical review remains a separate obligation.
 - RECEIPTS/ — build logs, hashes, exit codes, and verification receipts.
 - scripts/ — build, audit, and receipt helper scripts.
 - CONSOLIDATED/ — single entry point for the current checkpoint, process, evidence, examples, and script reference.
+
+## AQARION Project Ecosystem
+
+This repository is the Lean formalization and build-verification component of the broader AQARION project.
+
+- **[AQARION-LEAN](https://github.com/quantarion369-arch/AQARION-LEAN)** — Lean sources, formal verification, and build receipts.
+- **[AQARION](https://github.com/quantarion369-arch/AQARION)** — research artifacts, computational evidence, and provenance.
+- **[Aqarion-Fastapi](https://github.com/quantarion369-arch/Aqarion-Fastapi)** — API and operational integration.
+
+These repositories have distinct responsibilities. A successful Lean build establishes compilation success for the built targets; it does not, by itself, establish every mathematical claim, validate all computational evidence, or certify publication readiness.
 
 ## Start here
 
