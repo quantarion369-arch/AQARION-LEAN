@@ -59,3 +59,8 @@ Graded generation lemma in p2-mathlib, sorry-free before promotion.
 
 - P2-SEMIGROUP/p2-mathlib/P2Skeleton/UnitPivot.lean states the unit-pivot rank lemma used in Lemma 5 (unimodular normal form with r ones implies rank r over every field). The proof is `sorry`; the file only checks that the statement type-checks in CI (workflow p2-skeleton, errors fail, sorry allowed).
 - It is excluded from the release target P2Mathlib. It is not a proved theorem and does not change any status above.
+
+## Addendum: unit-pivot rank lemma, stage 1 (Mathlib skeleton)
+
+- rank_of_unit_pivot_normal_form is stated and its reduction to rank_partialId is written in Lean (checked only by the p2-skeleton CI job).
+- rank_partialId (rank of the partial identity over a field) is still `sorry`. Until it is proved, nothing in P2Skeleton is a verified theorem.

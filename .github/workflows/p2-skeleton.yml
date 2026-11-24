@@ -37,3 +37,8 @@ jobs:
           lake exe cache get
           lake build P2Skeleton 2>&1 | tee build.log
           echo "SORRY_WARNINGS=$(grep -c 'declaration uses' build.log || true)"
+      - name: Surface errors as annotations
+        if: failure()
+        run: |
+          msg="$(grep -A8 'error' build.log | head -40 | awk 'BEGIN{ORS="%0A"}{print}' || true)"
+          echo "::error title=lean-errors::${msg}"
