@@ -1,0 +1,103 @@
+name: p2-lean
+on:
+  push:
+    branches: ["main"]
+    paths:
+      - "P2-SEMIGROUP/**"
+      - ".github/workflows/p2-lean.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+env:
+  ELAN_COMMIT: 3cc76985a1becb3c03cd65c1c5007e6f186ae474
+  ELAN_SHA256: a620ff1641616222c8d37c54845492004bb84d6877cdbc944dd65c1aa685bf53
+jobs:
+  core:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        toolchain: ["v4.35.0-rc4", "v4.36.0"]
+    defaults:
+      run:
+        working-directory: P2-SEMIGROUP/p2-core
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Install pinned elan
+        run: |
+          set -euo pipefail
+          curl -sSfL "https://raw.githubusercontent.com/leanprover/elan/${ELAN_COMMIT}/elan-init.sh" -o "$RUNNER_TEMP/elan-init.sh"
+          echo "${ELAN_SHA256}  $RUNNER_TEMP/elan-init.sh" | sha256sum -c -
+          sh "$RUNNER_TEMP/elan-init.sh" -y --default-toolchain none
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Build and gate
+        run: |
+          set -euo pipefail
+          TC="leanprover/lean4:${{ matrix.toolchain }}"
+          elan toolchain install "$TC"
+          elan override set "$TC"
+          lean --version
+          sha256sum -c SOURCE.SHA256SUMS
+          lake build 2>&1 | tee build.log
+          python3 - <<'PY'
+          import re
+          t = open("build.log").read()
+          dep = re.findall(r"depends on axioms: \[([^\]]*)\]", t)
+          none = len(re.findall(r"does not depend on any axioms", t))
+          allowed = {"propext", "Quot.sound"}
+          bad = [x for x in dep if not {s.strip() for s in x.split(",") if s.strip()} <= allowed]
+          total = len(dep) + none
+          print("AXIOM_REPORTS", total, "BAD", bad, "SORRYAX", "sorryAx" in t)
+          assert total == 24 and not bad and "sorryAx" not in t
+          PY
+      - name: Negative controls must fail
+        run: |
+          set -uo pipefail
+          for f in controls/NegativeControl.lean controls/NegativeControl2.lean; do
+            if lake env lean "$f" > "$(basename "$f").log" 2>&1; then
+              echo "UNEXPECTED_COMPILE $f"; exit 1
+            fi
+            grep -q "error" "$(basename "$f").log" || { echo "NO_ERROR_TEXT $f"; exit 1; }
+            echo "REJECTED $f"
+          done
+  mathlib:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    defaults:
+      run:
+        working-directory: P2-SEMIGROUP/p2-mathlib
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Install pinned elan
+        run: |
+          set -euo pipefail
+          curl -sSfL "https://raw.githubusercontent.com/leanprover/elan/${ELAN_COMMIT}/elan-init.sh" -o "$RUNNER_TEMP/elan-init.sh"
+          echo "${ELAN_SHA256}  $RUNNER_TEMP/elan-init.sh" | sha256sum -c -
+          sh "$RUNNER_TEMP/elan-init.sh" -y --default-toolchain none
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Resolve, fetch cache, build, gate
+        run: |
+          set -euo pipefail
+          if [ ! -f lake-manifest.json ]; then
+            echo "MANIFEST_NOT_PINNED: resolving once; commit the printed manifest"
+            lake update
+          fi
+          lake exe cache get
+          lake build 2>&1 | tee build.log
+          python3 - <<'PY'
+          import re
+          t = open("build.log").read()
+          dep = re.findall(r"depends on axioms: \[([^\]]*)\]", t)
+          none = len(re.findall(r"does not depend on any axioms", t))
+          allowed = {"propext", "Classical.choice", "Quot.sound"}
+          bad = [x for x in dep if not {s.strip() for s in x.split(",") if s.strip()} <= allowed]
+          print("AXIOM_REPORTS", len(dep) + none, "BAD", bad, "SORRYAX", "sorryAx" in t)
+          assert len(dep) + none >= 1 and not bad and "sorryAx" not in t
+          PY
+          echo "===== lake-manifest.json ====="
+          cat lake-manifest.json

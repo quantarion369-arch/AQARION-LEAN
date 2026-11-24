@@ -1,0 +1,6 @@
+name = "p2_core"
+defaultTargets = ["P2Core"]
+
+[[lean_lib]]
+name = "P2Core"
+roots = ["ArithmeticKernel", "GenKernel"]
