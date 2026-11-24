@@ -1,0 +1,39 @@
+name: p2-skeleton
+on:
+  push:
+    branches: ["main"]
+    paths:
+      - "P2-SEMIGROUP/p2-mathlib/P2Skeleton/**"
+      - "P2-SEMIGROUP/p2-mathlib/P2Skeleton.lean"
+      - ".github/workflows/p2-skeleton.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+env:
+  ELAN_COMMIT: 3cc76985a1becb3c03cd65c1c5007e6f186ae474
+  ELAN_SHA256: a620ff1641616222c8d37c54845492004bb84d6877cdbc944dd65c1aa685bf53
+jobs:
+  skeleton:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    defaults:
+      run:
+        working-directory: P2-SEMIGROUP/p2-mathlib
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Install pinned elan
+        run: |
+          set -euo pipefail
+          curl -sSfL "https://raw.githubusercontent.com/leanprover/elan/${ELAN_COMMIT}/elan-init.sh" -o "$RUNNER_TEMP/elan-init.sh"
+          echo "${ELAN_SHA256}  $RUNNER_TEMP/elan-init.sh" | sha256sum -c -
+          sh "$RUNNER_TEMP/elan-init.sh" -y --default-toolchain none
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Build skeleton (errors fail the job; sorry is allowed here only)
+        run: |
+          set -euo pipefail
+          if [ ! -f lake-manifest.json ]; then lake update; fi
+          lake exe cache get
+          lake build P2Skeleton 2>&1 | tee build.log
+          echo "SORRY_WARNINGS=$(grep -c 'declaration uses' build.log || true)"

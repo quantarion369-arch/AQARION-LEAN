@@ -8,3 +8,6 @@ rev = "v4.36.0"
 
 [[lean_lib]]
 name = "P2Mathlib"
+
+[[lean_lib]]
+name = "P2Skeleton"
