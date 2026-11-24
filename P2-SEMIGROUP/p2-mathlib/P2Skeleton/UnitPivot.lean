@@ -2,6 +2,8 @@ import Mathlib
 
 set_option autoImplicit false
 
+open Matrix
+
 namespace P2Skeleton
 
 /-- Matrix with r ones on the leading diagonal and zeros elsewhere. -/
@@ -21,7 +23,9 @@ theorem pMat_mul_qMat (m n r : ℕ) (K : Type) [Field K] :
   by_cases hi : (i : ℕ) < r
   · rw [Finset.sum_eq_single (⟨(i : ℕ), hi⟩ : Fin r)]
     · by_cases hij : (i : ℕ) = (j : ℕ)
-      · simp [hij, hi]
+      · have hc : (i : ℕ) = (j : ℕ) ∧ (i : ℕ) < r := ⟨hij, hi⟩
+        rw [if_pos hc]
+        simp [hij]
       · simp [hij, hi]
     · intro k _ hk
       have hne : (i : ℕ) ≠ (k : ℕ) := by
