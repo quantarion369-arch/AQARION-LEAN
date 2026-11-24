@@ -51,7 +51,7 @@ jobs:
           bad = [x for x in dep if not {s.strip() for s in x.split(",") if s.strip()} <= allowed]
           total = len(dep) + none
           print("AXIOM_REPORTS", total, "BAD", bad, "SORRYAX", "sorryAx" in t)
-          assert total == 24 and not bad and "sorryAx" not in t
+          assert total == 27 and not bad and "sorryAx" not in t
           PY
       - name: Negative controls must fail
         run: |

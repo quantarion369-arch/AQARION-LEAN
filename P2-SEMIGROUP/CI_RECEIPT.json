@@ -12,7 +12,7 @@
   "pinned_actions": {"actions/checkout": "v7.0.1 @ 3d3c42e5aac5ba805825da76410c181273ba90b1"},
   "elan_bootstrap_commit": "3cc76985a1becb3c03cd65c1c5007e6f186ae474",
   "elan_bootstrap_sha256": "a620ff1641616222c8d37c54845492004bb84d6877cdbc944dd65c1aa685bf53",
-  "core_gate": "24 axiom reports, none outside {propext, Quot.sound}, no sorryAx, both negative controls rejected",
+  "core_gate": "27 axiom reports, none outside {propext, Quot.sound}, no sorryAx, both negative controls rejected",
   "this_repository_ci": "runs on push to main via .github/workflows/p2-lean.yml (paths: P2-SEMIGROUP/**); result recorded in the Actions tab",
   "scope": "Integer semigroup-generation lemma only. Not the cone, canonical-module, divisor-homology or resolution theorems."
 }

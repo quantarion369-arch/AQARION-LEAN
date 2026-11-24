@@ -3,4 +3,4 @@ defaultTargets = ["P2Core"]
 
 [[lean_lib]]
 name = "P2Core"
-roots = ["ArithmeticKernel", "GenKernel"]
+roots = ["ArithmeticKernel", "GenKernel", "Facets"]
