@@ -64,3 +64,8 @@ Graded generation lemma in p2-mathlib, sorry-free before promotion.
 
 - rank_of_unit_pivot_normal_form is stated and its reduction to rank_partialId is written in Lean (checked only by the p2-skeleton CI job).
 - rank_partialId (rank of the partial identity over a field) is still `sorry`. Until it is proved, nothing in P2Skeleton is a verified theorem.
+
+## Addendum: unit-pivot rank lemma, stage 2
+
+- rank_partialId is now proved in Lean via the factorization P*Q with Pt*P = 1 and Q*Qt = 1 (pushed with the p2-skeleton workflow; the result for this commit is the p2-skeleton run status and its recorded summary).
+- P2Skeleton remains outside the release target P2Mathlib until reviewed.
