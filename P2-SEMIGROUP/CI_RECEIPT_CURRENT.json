@@ -1,0 +1,45 @@
+{
+  "repository": "quantarion369-arch/AQARION-LEAN",
+  "receipt_kind": "current; supplements and does not replace CI_RECEIPT.json",
+  "receipt_date": "2026-11-24",
+  "bridge": {
+    "commit": "e8d7efafada29801deefb8e0aa9377f5fdca8d1f",
+    "p2_bridge_run": "https://github.com/quantarion369-arch/AQARION-LEAN/actions/runs/45528017684",
+    "p2_bridge_result": "success",
+    "p2_lean_run": "https://github.com/quantarion369-arch/AQARION-LEAN/actions/runs/45528018276",
+    "gate": "exactly 33 axiom reports, allowed {propext, Classical.choice, Quot.sound}, no sorryAx, no 'declaration uses'",
+    "applies_to_head": "P2-SEMIGROUP/p2-bridge and P2-SEMIGROUP/p2-core are byte-identical between this commit and the receipt commit's parent history head (checked by git diff before writing)"
+  },
+  "unit_trace_first_proof": {
+    "commit": "1bfff80f3f00109a5a3b55e138539f91872c8f6e",
+    "p2_skeleton_run": "https://github.com/quantarion369-arch/AQARION-LEAN/actions/runs/45537797593",
+    "p2_skeleton_result": "success",
+    "p2_lean_run": "https://github.com/quantarion369-arch/AQARION-LEAN/actions/runs/45537797598",
+    "p2_lean_result": "success",
+    "reported_axioms_of_rank_of_unitTrace": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "unit_trace_promotion": {
+    "commit": "dff1f26153194e249048760030f5e89b6872b35d",
+    "p2_lean_run": "https://github.com/quantarion369-arch/AQARION-LEAN/actions/runs/45539161347",
+    "p2_lean_jobs": {
+      "core (v4.35.0-rc4)": "success",
+      "core (v4.36.0)": "success",
+      "mathlib": "success"
+    },
+    "p2_skeleton_run": "https://github.com/quantarion369-arch/AQARION-LEAN/actions/runs/45539161402",
+    "p2_skeleton_result": "success",
+    "mathlib_gate": "exactly 3 axiom reports (Smoke, UnitPivot, UnitTrace), allowed {propext, Classical.choice, Quot.sound}, no sorryAx, no 'declaration uses'"
+  },
+  "scope_added": "Generic theorem P2Mathlib.rank_of_unitTrace: a valid UnitTrace of length r over an integer matrix certifies rank r over every field.",
+  "not_covered": [
+    "binding of the nine concrete component matrices and saved traces to UnitTrace",
+    "Lemma 2 endpoint presentation over every coefficient field",
+    "kernel generation, D4/D5 tail, canonical-module results",
+    "external or independent review"
+  ],
+  "overall_theorem_status": "DRAFT_REQUIRING_REVIEW"
+}

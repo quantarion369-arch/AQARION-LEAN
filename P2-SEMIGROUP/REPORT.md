@@ -43,3 +43,11 @@ Together with lattice spanning, these give S = C intersected with Z^5 and int(C)
 - The kernel-generation claims (D2 generates ker D1, D3 generates ker D2) and the final resolution.
 - That the nine component matrices reduce by unit pivots (covered by computational replay packages, not by Lean); only the generic rank transfer is formal.
 - Normality in Mathlib's sense, Hochster's theorem, Danilov-Stanley, canonical-module duality and Betti symmetry. These are classical results cited, not formalized.
+
+## Addendum (2026-11-24): generic unit-pivot trace theorem
+
+`P2Mathlib.rank_of_unitTrace` was added and promoted into the gated `P2Mathlib` library
+(mathlib job gate: exactly 3 axiom reports, allowed axioms propext, Classical.choice, Quot.sound,
+no sorryAx). It certifies rank r over every field for a valid unit-pivot trace of an integer matrix.
+It is a generic theorem; the concrete component matrices are not yet bound to it. See
+`TRACE_NOTE.md` and `CI_RECEIPT_CURRENT.json`.
