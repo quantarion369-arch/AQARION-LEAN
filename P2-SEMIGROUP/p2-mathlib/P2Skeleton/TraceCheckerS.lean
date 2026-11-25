@@ -47,7 +47,7 @@ theorem sg_addTo (k : ℕ) (v : ℤ) : ∀ (r : List (ℕ × ℤ)) (b : ℕ),
         ring
 
 def compact (r : List (ℕ × ℤ)) : List (ℕ × ℤ) :=
-  (r.foldr (fun p acc => addTo p.1 p.2 acc) []).filter (fun p => decide (p.2 ≠ 0))
+  (r.foldr (fun p acc => addTo p.1 p.2 acc) []).filter (fun p => !decide (p.2 = 0))
 
 theorem sg_foldr : ∀ (r : List (ℕ × ℤ)) (b : ℕ),
     sg (r.foldr (fun p acc => addTo p.1 p.2 acc) []) b = sg r b
@@ -56,7 +56,7 @@ theorem sg_foldr : ∀ (r : List (ℕ × ℤ)) (b : ℕ),
       simp [List.foldr_cons, sg_addTo, sg_foldr r b, sg]
 
 theorem sg_filter : ∀ (l : List (ℕ × ℤ)) (b : ℕ),
-    sg (l.filter (fun p => decide (p.2 ≠ 0))) b = sg l b
+    sg (l.filter (fun p => !decide (p.2 = 0))) b = sg l b
   | [], b => by simp [sg]
   | (k, w) :: l, b => by
       by_cases hw : w = 0
