@@ -65,7 +65,9 @@ theorem extZero_schurK_row {ι κ : Type} [Fintype ι] [DecidableEq ι] [Fintype
   · have e : redRow M i j a b = 0 := by
       rw [hb]
       exact redRow_apply_j M i j h a
-    simp [extZero, hb, e]
+    have e2 : extZero j ((schurK M i j).row a) b = 0 := by
+      simp [extZero, hb]
+    exact e2.trans e.symm
   · simp [extZero, hb, redRow, schurK, Matrix.row]
 
 /-- Rank of a matrix with a nonzero pivot is one plus the rank of its Schur complement. -/
