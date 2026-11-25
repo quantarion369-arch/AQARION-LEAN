@@ -8,3 +8,4 @@ import P2Skeleton.D4Deg8Checked
 import P2Skeleton.D4Deg9Checked
 import P2Skeleton.D3Deg7Checked
 import P2Skeleton.TraceCheckerS
+import P2Skeleton.D3Deg9S
