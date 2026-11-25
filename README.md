@@ -76,6 +76,7 @@ That file contains the current build ledger, verification boundary, and promotio
 | How a unit-pivot trace becomes a rank theorem, and a wording erratum | `P2-SEMIGROUP/TRACE_NOTE.md` |
 | CI evidence for Project 2 | `P2-SEMIGROUP/CI_RECEIPT_20261125.json`, `CI_RECEIPT_CURRENT.json`, and the Actions tab |
 | How to replay the Project 2 builds | `P2-SEMIGROUP/REPLAY.md` |
+| The AQFPR006 mutation gate and rebuild record | `RECEIPTS/GATE2-RECEIPT.txt` and `RECEIPTS/AQFPR006-receipt.txt` |
 | Device build records | `RECEIPTS/` |
 
 ## At a glance
@@ -87,6 +88,7 @@ That file contains the current build ledger, verification boundary, and promotio
 | **Allowed axioms** | `propext`, `Classical.choice`, `Quot.sound` (only `propext` and `Quot.sound` in `p2-core`); no `sorryAx` |
 | **Component bindings** | 7 of 9 integral component matrices bound to a generic rank theorem in Lean |
 | **Local audit** | All 9 saved traces replay to zero residual; rank equals the pivot count over characteristics 2, 3, 5, 7, 11, 13 and 101 |
+| **Latest recorded CI** | `p2-lean`, `p2-skeleton`, `p2-bridge` and `finite-anchor-join` last runs: success (checked 2026-11-25); `p2-skeleton-cases` has not been run |
 | **Overall Project 2 theorem** | `DRAFT_REQUIRING_REVIEW`, with no external review |
 | **CI** | 5 workflows; CI is the authoritative Lean checker for Project 2 |
 
@@ -144,6 +146,11 @@ See `P2-SEMIGROUP/REPLAY.md`. Finite-anchor verification:
     bash PROJECTS/FiniteAnchorJoinRigidity/verify.sh
     bash PROJECTS/FiniteAnchorJoinRigidity/verify.sh --check-only
 
+To confirm the AQFPR006 source is the one that was built and mutation-tested:
+
+    sha256sum PROJECTS/AQFPR006/AQFPR006/Basic.lean
+    # expected: 49b37f814920115a5efd84539cd67a8451eadb4dfbaf2c2d1db5824ab6e14687
+
 ## Status
 
 See `CONSOLIDATED/CHECKPOINT.md` and `STATUS.md`.
@@ -160,7 +167,7 @@ its exponential generating function should use `P(T(z))`, not `P(T(z)) - 1`.
 | **Gated** | ✅ | Built in CI with an axiom gate: only `propext`, `Classical.choice`, `Quot.sound` (only `propext` and `Quot.sound` for `p2-core`), no `sorryAx` | `p2-core`, `p2-bridge`, `P2Mathlib` |
 | **Built, ungated** | 🟡 | Built in CI, errors fail the job, `sorry` is permitted in that lane only | `P2Skeleton`, `p2-skeleton-cases` |
 | **Verified by a project verifier** | 🔧 | A recorded compile and axiom audit, reproducible with the project's own script | `FiniteAnchorJoinRigidity`, the device builds |
-| **Computational** | 🔬 | Replayed by scripts with receipts; not Lean | Evidence packages in the AQARION repository |
+| **Computational** | 🔬 | Replayed by scripts with receipts; not axiom-gated Lean | Evidence packages in the AQARION repository; the AQFPR006 anchors (`native_decide`) |
 | **Draft or research** | 📝 | A statement or calculation under review | The Project 2 resolution theorem; the temporal-observability checkpoint |
 
 "CI-reported" means the result is recorded by a GitHub Actions run. No Lean result in this repository has
@@ -170,12 +177,59 @@ had external or independent review.
 
 | Project | What it is | Recorded status |
 |---|---|---|
-| 🧮 **`AQFPR006`** | Repaired weighted-Bell / restricted-growth-string artifact | Rebuilt on device; passes its recorded finite anchors; Gate 2 rejects the tested gcd-to-lcm mutation |
+| 🧮 **`AQFPR006`** | Weighted-Bell numbers over restricted growth strings in core Lean, with five anchor checks (`[1,1,2]` = 7, `[2,2]` = 7, `[2,2,2]` = 31, `[2,4]` = 9, `[3,3]` = 8) proved by `native_decide` | Rebuilt on device (Lean 4.35.0-rc3, 4 jobs). Anchors are checked computations, not axiom-gated, with no general theorem. Gate 2 (gcd-to-lcm mutation) fails the build as intended on `[1,1,2]` and `[2,4]`, and the restored source builds again (`RECEIPTS/GATE2-RECEIPT.txt`) |
 | 📊 **`PB006Audit`** | Lean audit and benchmark artifact | Rebuilt on device |
 | ⚙️ **`PBCore006`** | Source transferred for build verification and mathematical review | Build pass on device (785 jobs); coefficient semantics remain open |
 | 🔗 **`FiniteAnchorJoinRigidity`** | Join of finite chains with generator inclusion, leastness, forward preservation and finite-anchor join rigidity | Fresh compile and four-declaration axiom audit passed (Lean 4.35.0-rc4); own CI workflow |
 | 🌀 **`TemporalObservability-20261029`** | Research and source checkpoint with a twelve-cycle computation | Not a Lean build |
 | 🧱 **`P2-SEMIGROUP`** | Project 2 formalization | Partly gated; overall theorem is a draft |
+
+<details>
+<summary><b>AQFPR006: weighted Bell numbers and the Gate 2 mutation test</b></summary>
+
+`PROJECTS/AQFPR006/AQFPR006/Basic.lean` is 42 lines and imports nothing, so it uses only core Lean.
+
+| Definition | What it does |
+|---|---|
+| `blockWeight` | For a block of numbers, takes the gcd, lists its divisors `d`, and sums `d^(size - 1)` |
+| `rgs` / `partitionsFromRGS` | Generate restricted growth strings and turn each into a set partition |
+| `weightedBell` | Sums, over all set partitions of the positions, the product of the block weights |
+
+Five anchor theorems, each proved by `native_decide`:
+
+| Input | Value |
+|---|---|
+| `[1,1,2]` | 7 |
+| `[2,2]` | 7 |
+| `[2,2,2]` | 31 |
+| `[2,4]` | 9 |
+| `[3,3]` | 8 |
+
+`native_decide` compiles the check to native code and runs it. It makes each theorem depend on a
+compiler-trust axiom (`Lean.ofReduceBool`), so these are checked computations, not axiom-gated proofs,
+and no general theorem about weighted Bell numbers is claimed.
+
+**Gate 2 (2026-10-13, recorded in `RECEIPTS/GATE2-RECEIPT.txt`).** The semantic mutation replaces gcd with
+lcm in the block weight.
+
+| Step | Build exit code | Result |
+|---|:---:|---|
+| Baseline | 0 | 4 jobs built |
+| gcd-to-lcm mutation | 1 | `native_decide` evaluated `weightedBell [1,1,2] = 7` and `weightedBell [2,4] = 9` as false |
+| Restored source | 0 | 4 jobs built |
+
+Only the anchors with unequal entries detect this mutation. When every entry of a block is equal, gcd and
+lcm coincide, so `[2,2]`, `[2,2,2]` and `[3,3]` are unaffected.
+
+**Rebuild record.** `RECEIPTS/AQFPR006-receipt.txt` records Lean 4.35.0-rc3 and Lake 5.0.0 on
+aarch64, a repair to the empty-code case of `rgs`, and the replacement of `List.get!` by `[i]!` indexing.
+It records the source hash `49b37f814920115a5efd84539cd67a8451eadb4dfbaf2c2d1db5824ab6e14687` for
+`Basic.lean`; the copy in this repository was checked on 2026-11-25 and matches.
+
+**Packaging note.** `lakefile.lean` still requires Mathlib, pinned in `lake-manifest.json` to revision
+`08c3fc3f372a6d35d18190fb26b7be083378dc38`, although `Basic.lean` does not import it.
+
+</details>
 
 <details>
 <summary><b>Finite-anchor join rigidity</b></summary>
@@ -197,9 +251,9 @@ four declaration reports matched:
 
 None reports `sorryAx`. This is selected-declaration formal checking, not novelty review or an audit of
 every declaration, and the separate Mathlib rewrite is not checked. The `finite-anchor-join` workflow
-uses the same verifier; the project's own note says the bootstrap and action major-version tags are
-mutable references, so this is not a hermetic supply-chain attestation. See
-`PROJECTS/FiniteAnchorJoinRigidity/VERIFICATION.md`.
+uses the same verifier, and its latest recorded run succeeded; the project's own note says the bootstrap
+and action major-version tags are mutable references, so this is not a hermetic supply-chain
+attestation. See `PROJECTS/FiniteAnchorJoinRigidity/VERIFICATION.md`.
 
 </details>
 
@@ -312,8 +366,20 @@ unit pivots.
 
 All nine also pass an independent local audit: the saved trace replays to zero residual, and the rank over
 characteristics 2, 3, 5, 7, 11, 13 and 101 equals the pivot count. The two unbound cases rest on that
-audit alone. A different certificate shape, explicit combinations of pivot rows, is the planned way to
-close them.
+audit alone.
+
+### Plan for D3 in degrees 8 and 9
+
+Standard GitHub-hosted runners for public repositories have 4 vCPU and 16 GB of RAM, so the kernel replay
+must fit within that. The options under evaluation, in order of preference:
+
+1. Block the replay: prove the rows reduce to zero in blocks of a few hundred rows, one theorem or module per block, one CI job per block.
+2. Lighten the checker for the kernel: primitive Nat and Int operations, no typeclass instances, no structural recursion.
+3. Explicit combinations of pivot rows as the certificate, stored sparsely.
+4. Only as a clearly labelled fallback, a separate lane using `native_decide`, which is not axiom-clean.
+
+Before choosing, run `p2-skeleton-cases` with peak memory recorded (`/usr/bin/time -v`) to learn whether the
+earlier termination was out-of-memory or a timeout.
 
 ## Continuous integration
 
@@ -325,8 +391,20 @@ close them.
 | `p2-skeleton-cases` | Selected large case modules, one parallel job each | Build success per case; prints axiom lines |
 | `finite-anchor-join` | `PROJECTS/FiniteAnchorJoinRigidity` through its `verify.sh` | Source hashes, compiler pin, fresh compile and the axiom audit described above |
 
+**Latest recorded runs, read from the GitHub API on 2026-11-25:**
+
+| Workflow | Latest conclusion | Commit |
+|---|---|---|
+| `p2-lean` | success | `7e9eafc` |
+| `p2-skeleton` | success | `f72a6b5` |
+| `p2-bridge` | success | `e8d7efa` |
+| `finite-anchor-join` | success | `e8b4c12` |
+| `p2-skeleton-cases` | never run | none |
+
+A green run is a statement about that commit only. README-only commits do not trigger the Lean workflows.
+
 Receipts are additive: `CI_RECEIPT.json` (early scope, preserved), `CI_RECEIPT_CURRENT.json`, and
-`CI_RECEIPT_20261125.json`.
+`CI_RECEIPT_20261125.json`, all under `P2-SEMIGROUP/`.
 
 ## Trust boundaries
 
@@ -338,6 +416,8 @@ Receipts are additive: `CI_RECEIPT.json` (early scope, preserved), `CI_RECEIPT_C
 - The overall resolution theorem remains `DRAFT_REQUIRING_REVIEW`.
 - No result has had external or independent review.
 - The skeleton lanes are not axiom-gated, so a green skeleton build is not a gated result.
+- The `p2-skeleton-cases` workflow has no recorded run.
+- The AQFPR006 anchors rely on `native_decide`, so they depend on a compiler-trust axiom and are not covered by the axiom gates above.
 
 | Check | It establishes | It does not establish |
 |---|---|---|
@@ -345,6 +425,7 @@ Receipts are additive: `CI_RECEIPT.json` (early scope, preserved), `CI_RECEIPT_C
 | Skeleton lane green | The modules compile; the printed axiom lines are as reported | A gate; promotion to a gated result |
 | Local audit pass | The saved data replays and ranks agree over the listed fields | A Lean proof |
 | Device build pass | The target compiled in the recorded environment | General mathematical correctness |
+| Mutation gate (Gate 2) | The anchors detect the tested gcd-to-lcm mutation | That every mutation would be detected |
 
 ## Roadmap
 
@@ -352,7 +433,9 @@ Receipts are additive: `CI_RECEIPT.json` (early scope, preserved), `CI_RECEIPT_C
 - [x] Generic unit-pivot trace-rank theorem in a gated lane (`P2Mathlib`)
 - [x] Row-native trace theorem and two checkers with proved soundness
 - [x] 7 of 9 component matrices bound to the generic theorem
-- [ ] Bind D3 in degrees 8 and 9 (planned: explicit combinations of pivot rows)
+- [x] AQFPR006 source hash confirmed against its rebuild receipt
+- [ ] Run `p2-skeleton-cases` and record peak memory
+- [ ] Bind D3 in degrees 8 and 9 (blocking first; see the plan above)
 - [ ] Promote the concrete bindings into a gated lane
 - [ ] Lemma 2: endpoint presentation over every coefficient field
 - [ ] Kernel generation and the D4 and D5 tail
