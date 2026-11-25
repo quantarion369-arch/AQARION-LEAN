@@ -111,3 +111,7 @@ jobs:
         run: |
           msg="$(grep -E 'depends on axioms|does not depend|declaration uses' build.log | awk 'BEGIN{ORS="%0A"}{print}' || true)"
           echo "::notice title=lean-summary::${msg}"
+      - name: Emit manifest for pinning
+        if: success()
+        run: |
+          echo "::notice title=lake-manifest-b64::$(base64 -w0 lake-manifest.json)"
