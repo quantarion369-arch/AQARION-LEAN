@@ -38,7 +38,8 @@ def cell (tab : List (List ℤ)) (a b : ℕ) : ℤ := gt (tgt tab a) b
 def stepAux (piv : List ℤ) (i j : ℕ) : ℕ → List (List ℤ) → List (List ℤ)
   | _, [] => []
   | k, r :: rs =>
-      (if k = i then r else rowStep (gt r j * gt piv j) r piv) :: stepAux piv i j (k + 1) rs
+      (if k = i then r else if gt r j = 0 then r else rowStep (gt r j * gt piv j) r piv)
+        :: stepAux piv i j (k + 1) rs
 
 /-- One elimination step on a dense table: clear column `j` from every row except row `i`. -/
 def stepTab (i j : ℕ) (tab : List (List ℤ)) : List (List ℤ) :=
@@ -56,6 +57,7 @@ theorem tgt_stepAux (piv : List ℤ) (i j : ℕ) :
     ∀ (rs : List (List ℤ)) (k a : ℕ), a < rs.length →
       tgt (stepAux piv i j k rs) a =
         if k + a = i then tgt rs a
+        else if gt (tgt rs a) j = 0 then tgt rs a
         else rowStep (gt (tgt rs a) j * gt piv j) (tgt rs a) piv
   | [], k, a, ha => by simp at ha
   | r :: rs, k, 0, _ => by simp [stepAux, tgt]
@@ -74,7 +76,9 @@ theorem cell_stepTab (tab : List (List ℤ)) (i j a b : ℕ) (ha : a < tab.lengt
   rw [tgt_stepAux _ _ _ tab 0 a ha]
   by_cases h : a = i
   · simp [h]
-  · simp [h, gt_rowStep]
+  · by_cases h2 : gt (tgt tab a) j = 0
+    · simp [h, h2]
+    · simp [h, h2, gt_rowStep]
 
 theorem gt_zero_of_forall : ∀ (r : List ℤ) (b : ℕ), (∀ x ∈ r, x = 0) → gt r b = 0
   | [], b, _ => by simp [gt]
