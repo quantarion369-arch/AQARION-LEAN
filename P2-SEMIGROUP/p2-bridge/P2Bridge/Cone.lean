@@ -24,6 +24,7 @@ theorem facet_sub_kappa (j : Fin 10) (x : Fin 5 → ℝ) (c : ℝ) :
   fin_cases j <;> simp [facet, kappa] <;> ring
 
 theorem facet_continuous (j : Fin 10) : Continuous (facet j) := by
+  show Continuous (fun x : Fin 5 → ℝ => facet j x)
   fin_cases j <;> simp [facet] <;> fun_prop
 
 theorem strictCone_isOpen : IsOpen strictCone := by
