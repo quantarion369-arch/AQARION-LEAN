@@ -7,3 +7,5 @@ import P2Skeleton.D3Deg6Checked
 import P2Skeleton.D4Deg8Checked
 import P2Skeleton.D4Deg9Checked
 import P2Skeleton.D3Deg7Checked
+import P2Skeleton.D2Deg6Checked
+import P2Skeleton.D3Deg8Checked
