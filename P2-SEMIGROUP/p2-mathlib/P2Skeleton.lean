@@ -1,1 +1,1 @@
-import P2Skeleton.UnitTrace
+/-! Reserved for future skeleton drafts; `sorry` is permitted only in this library. -/

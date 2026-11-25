@@ -2,7 +2,7 @@ import Mathlib
 
 set_option autoImplicit false
 
-namespace P2Skeleton
+namespace P2Mathlib
 
 /-- Integer Schur complement for a pivot entry equal to 1 or -1 (its own inverse). -/
 def schur {ι κ : Type} [Fintype ι] [DecidableEq ι] [Fintype κ] [DecidableEq κ]
@@ -180,6 +180,6 @@ theorem rank_of_unitTrace (K : Type) [Field K] :
       rcases hij with h1 | h1 <;> simp [h1]
     rw [rank_schurK_step _ i j hne, ← map_schur (K := K) M i j hij, ih _ _ _ h']
 
-end P2Skeleton
+end P2Mathlib
 
-#print axioms P2Skeleton.rank_of_unitTrace
+#print axioms P2Mathlib.rank_of_unitTrace
