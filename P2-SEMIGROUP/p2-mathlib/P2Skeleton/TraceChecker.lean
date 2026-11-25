@@ -164,7 +164,8 @@ theorem rank_of_check (n nc : ℕ) (tab : List (List ℤ)) (t : List (ℕ × ℕ
     simp
   rw [hu] at htr
   rw [← hl]
-  exact rank_of_rowTrace K (fun a b => cell tab a.val b.val) t' htr
+  exact rank_of_rowTrace (ι := Fin n) (κ := Fin nc) K
+    (fun (a : Fin n) (b : Fin nc) => cell tab a.val b.val) t' htr
 
 end P2Skeleton
 
