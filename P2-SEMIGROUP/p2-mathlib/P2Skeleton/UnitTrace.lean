@@ -19,8 +19,10 @@ def schurK {ι κ : Type} [Fintype ι] [DecidableEq ι] [Fintype κ] [DecidableE
 Schur elimination, ending in the zero matrix. -/
 def UnitTrace : ℕ → ∀ (ι κ : Type) [Fintype ι] [DecidableEq ι] [Fintype κ] [DecidableEq κ],
     Matrix ι κ ℤ → Prop
-  | 0 => fun ι κ M => M = 0
-  | r + 1 => fun ι κ M =>
+  | 0 => fun (ι κ : Type) [Fintype ι] [DecidableEq ι] [Fintype κ] [DecidableEq κ]
+      (M : Matrix ι κ ℤ) => M = 0
+  | r + 1 => fun (ι κ : Type) [Fintype ι] [DecidableEq ι] [Fintype κ] [DecidableEq κ]
+      (M : Matrix ι κ ℤ) =>
       ∃ (i : ι) (j : κ), (M i j = 1 ∨ M i j = -1) ∧
         UnitTrace r {a // a ≠ i} {b // b ≠ j} (schur M i j)
 
