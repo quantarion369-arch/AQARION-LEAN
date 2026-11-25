@@ -19,7 +19,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        module: [D3Deg8S, D3Deg8C]
+        module: [D3Deg8C, D3Deg9C]
     defaults:
       run:
         working-directory: P2-SEMIGROUP/p2-mathlib
