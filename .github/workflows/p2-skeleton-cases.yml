@@ -19,7 +19,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        module: [D2Deg5S, D2Deg6S, D3Deg8S, D3Deg9S]
+        module: [D3Deg8S, D3Deg8C]
     defaults:
       run:
         working-directory: P2-SEMIGROUP/p2-mathlib
@@ -36,10 +36,20 @@ jobs:
           echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
       - name: Build one case
         run: |
-          set -euo pipefail
-          if [ ! -f lake-manifest.json ]; then lake update; fi
-          lake exe cache get
-          lake build P2Skeleton.${{ matrix.module }} 2>&1 | tee build.log
+          set -uo pipefail
+          if [ ! -f lake-manifest.json ]; then lake update || exit 1; fi
+          lake exe cache get || exit 1
+          ls -l P2Skeleton/${{ matrix.module }}.lean
+          ( while true; do echo "MEM $(date +%T) used_MB=$(free -m | awk 'NR==2{print $3}') avail_MB=$(free -m | awk 'NR==2{print $7}')"; sleep 20; done ) &
+          SAMPLER=$!
+          trap 'kill $SAMPLER 2>/dev/null || true' EXIT
+          /usr/bin/time -v lake build P2Skeleton.${{ matrix.module }} 2>&1 | tee build.log
+          rc=${PIPESTATUS[0]}
+          echo "LAKE_EXIT=$rc"
+          exit $rc
+      - name: Report peak memory and time
+        if: always()
+        run: grep -E 'Maximum resident set size|Elapsed \(wall clock\)' build.log || true
       - name: Surface errors as annotations
         if: failure()
         run: |
