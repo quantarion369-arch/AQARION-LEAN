@@ -97,7 +97,17 @@ jobs:
           allowed = {"propext", "Classical.choice", "Quot.sound"}
           bad = [x for x in dep if not {s.strip() for s in x.split(",") if s.strip()} <= allowed]
           print("AXIOM_REPORTS", len(dep) + none, "BAD", bad, "SORRYAX", "sorryAx" in t)
-          assert len(dep) + none >= 1 and not bad and "sorryAx" not in t
+          assert len(dep) + none == 2 and not bad and "sorryAx" not in t and "declaration uses" not in t
           PY
           echo "===== lake-manifest.json ====="
           cat lake-manifest.json
+      - name: Surface errors as annotations
+        if: failure()
+        run: |
+          msg="$(grep -A8 'error' build.log | head -40 | awk 'BEGIN{ORS="%0A"}{print}' || true)"
+          echo "::error title=lean-errors::${msg}"
+      - name: Report axioms as notice
+        if: success()
+        run: |
+          msg="$(grep -E 'depends on axioms|does not depend|declaration uses' build.log | awk 'BEGIN{ORS="%0A"}{print}' || true)"
+          echo "::notice title=lean-summary::${msg}"

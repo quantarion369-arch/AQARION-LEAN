@@ -4,7 +4,7 @@ set_option autoImplicit false
 
 open Matrix
 
-namespace P2Skeleton
+namespace P2Mathlib
 
 /-- Matrix with r ones on the leading diagonal and zeros elsewhere. -/
 def partialId (m n r : ℕ) : Matrix (Fin m) (Fin n) ℤ :=
@@ -144,6 +144,6 @@ theorem rank_of_unit_pivot_normal_form
   rw [hrk, h1]
   exact rank_partialId m n r hrm hrn K
 
-end P2Skeleton
+end P2Mathlib
 
-#print axioms P2Skeleton.rank_of_unit_pivot_normal_form
+#print axioms P2Mathlib.rank_of_unit_pivot_normal_form

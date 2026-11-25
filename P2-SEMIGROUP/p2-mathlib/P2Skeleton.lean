@@ -1,1 +1,2 @@
-import P2Skeleton.UnitPivot
+-- Reserved for statement-only drafts (sorry allowed; built by workflow p2-skeleton).
+-- Move a file into P2Mathlib once it is proved; the release job forbids sorry.

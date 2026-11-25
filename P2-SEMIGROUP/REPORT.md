@@ -69,3 +69,12 @@ Graded generation lemma in p2-mathlib, sorry-free before promotion.
 
 - rank_partialId is now proved in Lean via the factorization P*Q with Pt*P = 1 and Q*Qt = 1 (pushed with the p2-skeleton workflow; the result for this commit is the p2-skeleton run status and its recorded summary).
 - P2Skeleton remains outside the release target P2Mathlib until reviewed.
+
+## Addendum: unit-pivot rank lemma promoted to the release target
+
+- P2-SEMIGROUP/p2-mathlib/P2Mathlib/UnitPivot.lean now holds rank_of_unit_pivot_normal_form with its helper lemmas (partialId, pMat, qMat). No sorry.
+- Statement: if unimodular integer matrices U, V satisfy U*M*V = partialId m n r, then M has rank r over every field K (Mathlib v4.36.0, Lean v4.36.0).
+- Axioms reported by the build: propext, Classical.choice, Quot.sound.
+- The release job now requires exactly two axiom reports (smoke test and this lemma), no sorryAx and no `declaration uses` warning.
+- Scope: this is the rank-transfer step only. It does not formalize that the nine specific matrices reduce this way (see the replay packages) or the kernel-generation claims.
+- P2Skeleton is retained as an empty lane for future statement-only drafts.
