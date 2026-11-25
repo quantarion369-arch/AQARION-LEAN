@@ -60,7 +60,9 @@ theorem tgt_stepAux (piv : List ℤ) (i j : ℕ) :
         else if gt (tgt rs a) j = 0 then tgt rs a
         else rowStep (gt (tgt rs a) j * gt piv j) (tgt rs a) piv
   | [], k, a, ha => by simp at ha
-  | r :: rs, k, 0, _ => by simp [stepAux, tgt]
+  | r :: rs, k, 0, _ => by
+      simp only [stepAux, tgt, Nat.add_zero]
+      split_ifs <;> rfl
   | r :: rs, k, a + 1, ha => by
       have ha' : a < rs.length := by simpa using ha
       have e : k + (a + 1) = (k + 1) + a := by omega
