@@ -47,7 +47,7 @@ jobs:
           allowed = {"propext", "Classical.choice", "Quot.sound"}
           bad = [x for x in dep if not {s.strip() for s in x.split(",") if s.strip()} <= allowed]
           print("AXIOM_REPORTS", len(dep) + none, "BAD", bad, "SORRYAX", "sorryAx" in t)
-          assert len(dep) + none >= 1 and not bad and "sorryAx" not in t and "declaration uses" not in t
+          assert len(dep) + none == 33 and not bad and "sorryAx" not in t and "declaration uses" not in t
           PY
       - name: Surface errors as annotations
         if: failure()
