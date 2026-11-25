@@ -35,11 +35,14 @@ def tgt : List (List ℤ) → ℕ → List ℤ
 
 def cell (tab : List (List ℤ)) (a b : ℕ) : ℤ := gt (tgt tab a) b
 
+/-- Row update: leave the row alone when its pivot-column entry is zero. -/
+def rowOp (piv : List ℤ) (j : ℕ) (r : List ℤ) : List ℤ :=
+  if gt r j = 0 then r else rowStep (gt r j * gt piv j) r piv
+
 def stepAux (piv : List ℤ) (i j : ℕ) : ℕ → List (List ℤ) → List (List ℤ)
   | _, [] => []
   | k, r :: rs =>
-      (if k = i then r else if gt r j = 0 then r else rowStep (gt r j * gt piv j) r piv)
-        :: stepAux piv i j (k + 1) rs
+      (if k = i then r else rowOp piv j r) :: stepAux piv i j (k + 1) rs
 
 /-- One elimination step on a dense table: clear column `j` from every row except row `i`. -/
 def stepTab (i j : ℕ) (tab : List (List ℤ)) : List (List ℤ) :=
@@ -57,12 +60,9 @@ theorem tgt_stepAux (piv : List ℤ) (i j : ℕ) :
     ∀ (rs : List (List ℤ)) (k a : ℕ), a < rs.length →
       tgt (stepAux piv i j k rs) a =
         if k + a = i then tgt rs a
-        else if gt (tgt rs a) j = 0 then tgt rs a
-        else rowStep (gt (tgt rs a) j * gt piv j) (tgt rs a) piv
+        else rowOp piv j (tgt rs a)
   | [], k, a, ha => by simp at ha
-  | r :: rs, k, 0, _ => by
-      simp only [stepAux, tgt, Nat.add_zero]
-      split_ifs <;> rfl
+  | r :: rs, k, 0, _ => by simp [stepAux, tgt]
   | r :: rs, k, a + 1, ha => by
       have ha' : a < rs.length := by simpa using ha
       have e : k + (a + 1) = (k + 1) + a := by omega
@@ -79,8 +79,8 @@ theorem cell_stepTab (tab : List (List ℤ)) (i j a b : ℕ) (ha : a < tab.lengt
   by_cases h : a = i
   · simp [h]
   · by_cases h2 : gt (tgt tab a) j = 0
-    · simp [h, h2]
-    · simp [h, h2, gt_rowStep]
+    · simp [h, h2, rowOp]
+    · simp [h, h2, rowOp, gt_rowStep]
 
 theorem gt_zero_of_forall : ∀ (r : List ℤ) (b : ℕ), (∀ x ∈ r, x = 0) → gt r b = 0
   | [], b, _ => by simp [gt]
