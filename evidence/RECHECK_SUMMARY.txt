@@ -1,0 +1,43 @@
+AQARION DENOM5 FROM-SOURCE REBUILD CHECK
+UTC=20261126T051634Z
+Lean (version 4.35.0-rc4, aarch64-unknown-linux-gnu, commit c29b6dda4f7c20e3eeaa717c4e565663c5cfa364, Release)
+LEAN_PATH restricted to: /root/AQARION_MARKOV_MEMORY_LEAN/recheck_20261126T051634Z
+
+[CHAIN] Denom5InvariantPlaneFixed              exit=0 axioms_lines=3 sorryAx=0 usesSorry=0 src=94c4deb03e86ec10 obj=016f6f2d213725aa
+    result=OBJECT_IDENTICAL
+[CHAIN] Denom5RationalSpan                     exit=0 axioms_lines=13 sorryAx=0 usesSorry=0 src=7a72926c168e8e12 obj=834cd62a310ff68d
+    result=OBJECT_IDENTICAL
+[CHAIN] Denom5KernelCriterionFixed             exit=0 axioms_lines=5 sorryAx=0 usesSorry=0 src=2d457734e40d598f obj=fffb032c44fcfc36
+    result=OBJECT_IDENTICAL
+[CHAIN] Denom5SpanClosure                      exit=0 axioms_lines=14 sorryAx=0 usesSorry=0 src=2a5d9cb558843c21 obj=eddded04ec3b4b74
+    result=OBJECT_IDENTICAL
+[CHAIN] Denom5SpanMinimality                   exit=0 axioms_lines=6 sorryAx=0 usesSorry=0 src=8da06a61ae555f7c obj=039f8ede85b1fe67
+    result=OBJECT_IDENTICAL
+[CHAIN] Denom5ObservableDynamics               exit=0 axioms_lines=6 sorryAx=0 usesSorry=0 src=931da0a2e72b73e7 obj=4722389e3d162d3d
+    result=OBJECT_IDENTICAL
+[CHAIN] Denom5ExplicitObservedFixed            exit=0 axioms_lines=9 sorryAx=0 usesSorry=0 src=86be6a7594f6e0c5 obj=6fd62903fa28a64f
+    result=OBJECT_IDENTICAL
+[CHAIN] Denom5FiniteWordSimulationCore2        exit=0 axioms_lines=4 sorryAx=0 usesSorry=0 src=907f380b9d7885e6 obj=2b3291c60f17dd4b
+    result=OBJECT_IDENTICAL
+[CHAIN] Denom5CylinderProbabilityFixed         exit=0 axioms_lines=9 sorryAx=0 usesSorry=0 src=a74a0a39da05addf obj=2e0a42b6bbf271c7
+    result=OBJECT_IDENTICAL
+[CHAIN] Denom5PitmanRogersLink                 exit=0 axioms_lines=11 sorryAx=0 usesSorry=0 src=31b5f07ffc6ff90d obj=e0d3c77d38789d45
+    result=OBJECT_IDENTICAL
+[CHAIN] Denom5BalancedInitialCylinderFixed     exit=0 axioms_lines=3 sorryAx=0 usesSorry=0 src=0d382596b38b84c5 obj=4f6fd17609c78f80
+    result=OBJECT_IDENTICAL
+[CHAIN] Denom5WeakLumpabilityAlgebra           exit=0 axioms_lines=5 sorryAx=0 usesSorry=0 src=a1526e2c3565ed58 obj=b3d4ac437ce95a7d
+    result=OBJECT_IDENTICAL
+[CHAIN] Denom5WeakLumpabilityProbability       exit=0 axioms_lines=4 sorryAx=0 usesSorry=0 src=a1df5f35d4315716 obj=1c397590d12e7b9b
+    result=OBJECT_IDENTICAL
+[CHAIN] Denom5WeakLumpabilityTwoStep           exit=0 axioms_lines=8 sorryAx=0 usesSorry=0 src=73735c757d0c7167 obj=84b86570e41d28b4
+    result=OBJECT_IDENTICAL
+[CHAIN] Denom5ObservedAllHistoryMarkov         exit=0 axioms_lines=13 sorryAx=0 usesSorry=0 src=fb55ea1afad9a492 obj=54b251f12825f118
+    result=OBJECT_IDENTICAL
+[CHAIN] Denom5BalancedAllHistoryMarkov         exit=0 axioms_lines=3 sorryAx=0 usesSorry=0 src=4baf315088b61537 obj=d3c68936575d88a3
+    result=OBJECT_IDENTICAL
+[CHAIN] Denom5WeakLumpabilityCapstone          exit=0 axioms_lines=3 sorryAx=0 usesSorry=0 src=46208210d9d5c890 obj=b01f4aeb33abc617
+    result=OBJECT_IDENTICAL
+[EXTRA-NOT-COUNTED] Denom5WeakLumpabilityFiniteHistory     exit=0 axioms_lines=3 sorryAx=0 usesSorry=0 src=50a388057d2f92f8 obj=93e7e31ef6489747
+    result=OBJECT_IDENTICAL
+
+CHAIN_ALL_BUILT=1
