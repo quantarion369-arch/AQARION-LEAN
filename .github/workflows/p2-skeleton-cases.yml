@@ -9,13 +9,16 @@ on:
   workflow_dispatch:
 permissions:
   contents: read
+concurrency:
+  group: p2-skeleton-cases-${{ github.ref }}
+  cancel-in-progress: false
 env:
   ELAN_COMMIT: 3cc76985a1becb3c03cd65c1c5007e6f186ae474
   ELAN_SHA256: a620ff1641616222c8d37c54845492004bb84d6877cdbc944dd65c1aa685bf53
 jobs:
   case:
     runs-on: ubuntu-latest
-    timeout-minutes: 90
+    timeout-minutes: 60
     strategy:
       fail-fast: false
       matrix:
@@ -60,4 +63,3 @@ jobs:
         run: |
           msg="$(grep -E 'depends on axioms|does not depend|declaration uses' build.log | awk 'BEGIN{ORS="%0A"}{print}' || true)"
           echo "::notice title=lean-summary::${msg}"
-# rerun D3Deg9C without cancellation
