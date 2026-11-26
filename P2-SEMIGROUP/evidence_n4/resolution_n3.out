@@ -1,0 +1,10 @@
+[    0s] n=3: 12870 monomials, 2025 multidegrees up to weight 8
+[    0s] built through degree index 0 / 2025 (weight 0); generators so far [1, 0, 0, 0, 0]
+[  130s] built through degree index 2000 / 2025 (weight 8); generators so far [1, 9, 16, 9, 1]
+[  130s] PASS Betti table (homological degree, weight) equals the formula; totals [1, 9, 16, 9, 1]
+[  130s] PASS every coefficient is +1 or -1 (entries: {2: 18, 1: 113})
+[  130s] PASS d^2 = 0 over the integers
+[  142s] PASS exact over F_2 in all 2025 multidegrees up to weight 8
+[  152s] PASS exact over F_3 in all 2025 multidegrees up to weight 8
+[  164s] PASS exact over F_5 in all 2025 multidegrees up to weight 8
+ALL PASS
