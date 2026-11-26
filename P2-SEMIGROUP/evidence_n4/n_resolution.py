@@ -131,6 +131,13 @@ for i in range(2,L+1):
             for key,c2 in apply(i-1,k,u).items(): acc[key]+=c*c2
         if any(acc.values()): bad+=1
 report("d^2 = 0 over the integers", bad==0)
+aug_bad=sum(1 for dct in D[1] if sum(dct.values())!=0)
+report("augmentation eps*d_1 = 0 exactly over the integers (every first-syzygy column has coefficient sum 0)", aug_bad==0)
+import json,hashlib
+cert={"n":n,"gens":[[[list(s),w] for (s,w) in g] for g in gens[:L+1]],"D":[None]+[[[[k,list(u),c] for (k,u),c in dct.items()] for dct in D[i]] for i in range(1,L+1)]}
+blob=json.dumps(cert,sort_keys=True).encode()
+open("resolution_n%d.json"%n,"wb").write(blob)
+log("wrote resolution_n%d.json (%d bytes) sha256 %s"%(n,len(blob),hashlib.sha256(blob).hexdigest()))
 def rank_p(M,p):
     return len(rref(M,p)[1])
 def ranks_at(b,p):
