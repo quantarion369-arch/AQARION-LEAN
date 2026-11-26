@@ -4,6 +4,8 @@ import P2Skeleton.TraceChunks
 set_option autoImplicit false
 set_option maxHeartbeats 0
 set_option maxRecDepth 100000
+set_option profiler true
+set_option profiler.threshold 3000
 
 namespace P2Skeleton.D3Deg9C
 

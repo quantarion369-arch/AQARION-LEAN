@@ -63,3 +63,15 @@ jobs:
         run: |
           msg="$(grep -E 'depends on axioms|does not depend|declaration uses' build.log | awk 'BEGIN{ORS="%0A"}{print}' || true)"
           echo "::notice title=lean-summary::${msg}"
+      - name: Job summary
+        if: always()
+        run: |
+          {
+            echo '### ${{ matrix.module }}'
+            echo '```'
+            grep -E 'Maximum resident set size|Elapsed \(wall clock\)' build.log || true
+            grep -E 'error|took' build.log | head -30 | cut -c1-300 || true
+            echo '--- tail ---'
+            tail -n 8 build.log | cut -c1-300
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
